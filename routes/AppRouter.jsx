@@ -1,5 +1,9 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import Login from "../src/pages/Login";
 import AboutUs from "../src/pages/AboutUs";
 import Test from "../src/pages/Test";
@@ -9,24 +13,38 @@ import App from "../src/App";
 import Layout from "../src/layout/layout";
 import Home from "../src/pages/Home";
 import Article from "../src/pages/Article";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      { index: true, element: <Home/> },
-      { path: "about", element: <AboutUs /> },
-      { path: "test", element: <Test /> },
-      { path: "course", element: <Course /> },
-      { path: "login", element: <Login /> },
-      { path: "article", element: <Article/> },
-      { path: "register", element: <Register /> },
-    ],
-  },
-]);
+import UserInfo from "../src/pages/UserInfo";
+import PageNotFound from "../src/pages/PageNotFound";
+import CreateArticle from "../src/pages/pages-inside/CreateArticle";
+import useAuthStore from "../store/authStore";
+import InsideArticle from "../src/pages/pages-inside/InsideArticle";
+import CreateCourse from "../src/pages/pages-inside/CreateCourse";
 
 function AppRouter() {
+  const { user, token, logout } = useAuthStore();
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "about", element: <AboutUs /> },
+        { path: "test", element: <Test /> },
+        { path: "course", element: <Course /> },
+        { path: "course/create", element: <CreateCourse/>},
+
+        { path: "login", element: token ? <Navigate to="/" /> : <Login /> },
+        { path: "register", element: token ? <Navigate to="/" /> : <Register />},
+        { path: "article", element: <Article /> },
+        { path: "article/:id", element: <InsideArticle/> },
+        { path: "article/create", element: <CreateArticle /> },
+        { path: "userinfo", element: <UserInfo /> },
+        { path: "*", element: <PageNotFound /> },
+      ],
+    },
+  ]);
+  // const user = null //change when login,but not sure this app need or not
+  // const finalRouter = user? userRouter : guestRouter
   return <RouterProvider router={router} />;
 }
 

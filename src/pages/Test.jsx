@@ -1,8 +1,11 @@
 import React from 'react'
+import Dummy from '../components/Dummy'
 
 function Test() {
   return (
-    <div>Test</div>
+    <div className='pt-16'>
+      <Dummy/>
+    </div>
   )
 }
 

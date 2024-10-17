@@ -10,9 +10,9 @@ function Home() {
         <div className="pt-12">
           <div>
             <img
-              src="./src/images/logo black.png"
+              src="./src/images/logo pink.png"
               alt=""
-              className="absolute right-16 w-[600px] top-28 "
+              className="absolute right-16 w-[600px] top-28  "
             />
           </div>
           <main className="flex-grow container mx-auto px-4 py-8 pt-16">
@@ -82,6 +82,10 @@ function Home() {
 
             {/* Popular Article Section */}
             <div className="mb-8">
+            <h2 className="text-2xl font-bold mb-4 font-kanit ">
+                บทความที่น่าสนใจ{" "}
+                <span className="font-noto-sans-jp text-2xl">記事</span>
+              </h2>
               <div className="divider"></div>
               <div className="flex justify-between px-5">
                 <img
@@ -101,6 +105,7 @@ function Home() {
                 />
               </div>
               <div className="flex  justify-center">
+                
                 <button className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
                   {" "}
                   all article บทความที่น่าสนใจทั้งหมด{" "}

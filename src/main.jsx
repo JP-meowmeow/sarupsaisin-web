@@ -5,8 +5,7 @@ import './index.css'
 import AboutUs from './pages/AboutUs.jsx'
 import Login from './pages/Login.jsx'
 
+  
 createRoot(document.getElementById('root')).render(
     <App />
-    // <AboutUs/>
-    // <Login/>
 )
