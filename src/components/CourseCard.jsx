@@ -3,7 +3,7 @@ import useAuthStore from "../../store/authStore";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function CourseCard() {
+function CourseCard({item}) {
   return (
     <div>
       <div className="card card-compact bg-base-100 w-96 shadow-xl">
@@ -15,15 +15,18 @@ function CourseCard() {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">JLPT N5</h2>
-          <p>คอร์สเรียนภาษาญี่ปุ่น เตรียมสอบ JLPT N5</p>
+          <h2 className="card-title">{item.courseName}</h2>
+          <p>
+            {item.shortDescription.slice(0,30)}
+          </p>
           
           <div className="card-actions justify-end">
             <div>
 
-          <h2 className="card-title justify-end pb-1">2,000 บาท</h2>
+          <h2 className="card-title justify-end pb-1">{
+            item.price} บาท </h2>
             <Link
-              to={"/article/"}
+              to={"/course/"+item.id}
               className="btn btn-primary font-noto-sans-jp"
               >
               さらに詳しく

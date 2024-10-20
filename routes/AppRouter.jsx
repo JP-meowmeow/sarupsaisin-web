@@ -18,7 +18,10 @@ import PageNotFound from "../src/pages/PageNotFound";
 import CreateArticle from "../src/pages/pages-inside/CreateArticle";
 import useAuthStore from "../store/authStore";
 import InsideArticle from "../src/pages/pages-inside/InsideArticle";
+import InsideCourse from "../src/pages/pages-inside/InsideCourse";
 import CreateCourse from "../src/pages/pages-inside/CreateCourse";
+import EditArticle from "../src/pages/pages-inside/EditArticle";
+import EditCourse from "../src/pages/pages-inside/EditCourse";
 
 function AppRouter() {
   const { user, token, logout } = useAuthStore();
@@ -30,15 +33,25 @@ function AppRouter() {
         { index: true, element: <Home /> },
         { path: "about", element: <AboutUs /> },
         { path: "test", element: <Test /> },
+
         { path: "course", element: <Course /> },
-        { path: "course/create", element: <CreateCourse/>},
+        { path: "course/:id", element:<InsideCourse/> },
+        { path: "course/create", element: <CreateCourse /> },
+        { path: `course/edit/:id`, element: <EditCourse/>},
 
         { path: "login", element: token ? <Navigate to="/" /> : <Login /> },
-        { path: "register", element: token ? <Navigate to="/" /> : <Register />},
+        {
+          path: "register",
+          element: token ? <Navigate to="/" /> : <Register />,
+        },
+
         { path: "article", element: <Article /> },
-        { path: "article/:id", element: <InsideArticle/> },
+        { path: "article/:id", element: <InsideArticle /> },
         { path: "article/create", element: <CreateArticle /> },
+        { path: `article/edit/:id`, element: <EditArticle /> },
+
         { path: "userinfo", element: <UserInfo /> },
+
         { path: "*", element: <PageNotFound /> },
       ],
     },

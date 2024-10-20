@@ -2,20 +2,25 @@ import React, { useState, useEffect } from "react";
 import useAuthStore from "../../store/authStore";
 import axios, { Axios } from "axios";
 import ArticleCardDashboard from "../components/ArticleCardDashboard";
+import CourseCardDashboard from "../components/CourseCardDashboard";
 
 function UserInfo() {
   const token = useAuthStore((state) => state.token);
   const role = useAuthStore((state) => state.role);
 
   const [articleData, setArticleData] = useState([]);
+  const [courseData, setCourseData] = useState([]);
 
   useEffect(() => {
     const run = async () => {
-      await getArticle(token);
+      await getArticle();
+      await getCourse();
+      console.log("article", articleData);
+      console.log("course", courseData);
     };
 
-    run()
-  }, []);
+    run();
+  }, [articleData.length]);
 
   async function getArticle() {
     const response = await axios.get(
@@ -26,6 +31,16 @@ function UserInfo() {
     );
     setArticleData(response.data.response);
     // console.log('here',articleData);
+  }
+
+  async function getCourse() {
+    const response = await axios.get(
+      "http://localhost:8000/course/getcoursedashboard",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    setCourseData(response.data.response);
   }
 
   return (
@@ -39,22 +54,27 @@ function UserInfo() {
               className="w-[500px] mb-16"
               alt=""
             />
-            <h1 className="text-2xl font-bold font-kanit mb-16">
+            <h1 className="text-2xl font-bold font-kanit mb-4">
               คอร์สเรียน{" "}
               <span className="font-noto-sans-jp text-2xl">コース</span>
             </h1>
+            <div className="flex gap-5 mb-5">
+              {courseData.map((item) => (
+                <CourseCardDashboard key={item.id} item={item} />
+              ))}
+            </div>
             <div className="divider"></div>
-            <h1 className="text-2xl font-bold font-kanit mb-16">
+            <h1 className="text-2xl font-bold font-kanit mb-4">
               หนังสือเรียน/ข้อสอบ{" "}
               <span className="font-noto-sans-jp text-2xl">テスト・本</span>
             </h1>
             <div className="divider"></div>
-            <h1 className="text-2xl font-bold font-kanit mb-16">
+            <h1 className="text-2xl font-bold font-kanit mb-4">
               บทความ <span className="font-noto-sans-jp text-2xl">記事</span>
             </h1>
             <div className="flex gap-5 mb-5">
-              {articleData.map((item)=>(
-               <ArticleCardDashboard key={item.id} item={item} />
+              {articleData.map((item) => (
+                <ArticleCardDashboard key={item.id} item={item} />
               ))}
             </div>
           </div>

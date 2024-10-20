@@ -5,25 +5,12 @@ import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
 
 function Article() {
-  const [slideIndex, setSlideIndex] = useState(0);
   const role = useAuthStore((state) => state.role);
   const [article, setArticle] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8; // 2 rows * 4 items per row
 
 
-  // slide parts 
-
-  // const slides = [
-  //   "https://res.cloudinary.com/dhwgh6rof/image/upload/v1728899419/Article_2_dbmhmx.png",
-  //   "https://res.cloudinary.com/dhwgh6rof/image/upload/v1728899419/Article_1_xpkmjm.png",
-  //   "https://res.cloudinary.com/dhwgh6rof/image/upload/v1728899419/Article_3_wzumy9.png",
-  //   "https://res.cloudinary.com/dhwgh6rof/image/upload/v1728899419/Article_4_ownflx.jpg",
-  // ];
-
-  // const changeSlide = (n) => {
-  //   setSlideIndex((prevIndex) => (prevIndex + n + slides.length) % slides.length);
-  // };
 
   useEffect(() => {
     getAllArticle();

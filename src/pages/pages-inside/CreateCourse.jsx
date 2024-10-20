@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useAuthStore from "../../../store/authStore";
+import useCourseStore from "../../../store/courseStore";
 
 function CreateCourse() {
+  const token = useAuthStore((state) => state.token);
+  const createCourse = useCourseStore((state) => state.createCourse);
   const navigate = useNavigate();
+
   const [file, setFile] = useState(null);
   const [form, setForm] = useState({
     courseName: "",
-    detail: "",
+    shortDescription: "",
+    longDescription: "",
+    price: "",
   });
 
+  const [units, setUnits] = useState([
+    { unitNumber: 1, title: "", description: "", youtubeLink: "" },
+  ]);
+
   const hdlFileChange = (e) => {
-    console.log(e.target.files);
     setFile(e.target.files[0]);
-    console.log(form);
   };
 
   const hdlChange = (e) => {
@@ -21,18 +30,49 @@ function CreateCourse() {
     console.log(form);
   };
 
+  const hdlUnitChange = (index, e) => {
+    const { name, value } = e.target;
+    const newUnits = [...units];
+    newUnits[index] = { ...newUnits[index], [name]: value };
+    setUnits(newUnits);
+  };
+
+  const addUnit = () => {
+    setUnits([
+      ...units,
+      {
+        unitNumber: units.length + 1,
+        title: "",
+        description: "",
+        youtubeLink: "",
+      },
+    ]);
+  };
+
+  const removeUnit = (index) => {
+    const newUnits = units.filter((_, i) => i !== index);
+    setUnits(newUnits);
+  };
+
   const hdlCreateCourse = async (e) => {
     try {
       const body = new FormData();
       body.append("courseName", form.courseName);
-      body.append("detail", form.detail);
+      body.append("shortDescription", form.shortDescription);
+      body.append("longDescription", form.longDescription);
+      body.append("price", form.price);
+      body.append("units", JSON.stringify(units));
       if (file) {
         body.append("link", file);
       }
-      await createArticle(body, token);
-      navigate("/article");
 
-      toast.success("create article");
+      for (let [key, value] of body.entries()) {
+        console.log(`${key}: ${value}`);
+      } // to check what are inside the body
+
+      await createCourse(body, token);
+      toast.success("Course created successfully");
+      navigate("/course");
     } catch (err) {
       const errMessage = err.response?.data?.error || err.message;
       console.log(errMessage);
@@ -41,26 +81,55 @@ function CreateCourse() {
   };
   return (
     <div className="m-16 pt-10 font-kanit">
-      <header className="flex items-center gap-5 mb-5">
-        <span>Course name : </span>
-        <input
-          type="text"
-          name="header"
-          placeholder="Please add course name here..."
-          className="input input-bordered  w-1/2 max-w-xs"
-          onChange={hdlChange}
-        />
-        {form.header && form.detail && file ? (
-          <button className="btn" onClick={hdlCreateCourse}>
-            Submit Course
-          </button>
-        ) : (
-          <button className="btn" onClick={hdlCreateCourse} disabled>
-            Submit Course
-          </button>
-        )}
+      <h1 className="text-2xl font-bold font-kanit mb-4">
+        ข้อมูลคอร์ส{" "}
+        <span className="font-noto-sans-jp text-2xl">コース内容</span>
+      </h1>
+      <header className=" items-center gap-5 mb-5">
+        <div>
+          <div className="mb-5">
+            <span>Course name : </span>
+            <input
+              type="text"
+              name="courseName"
+              placeholder="Please add course name here..."
+              className="input input-bordered   w-1/2 max-w-xs"
+              onChange={hdlChange}
+            />
+            <span className="ml-3">Course price : </span>
+            <input
+              type="text"
+              name="price"
+              placeholder="Please add course price here..."
+              className="input input-bordered  w-[20%] max-w-xs"
+              onChange={hdlChange}
+            />
+          </div>
+          <span>Course description : </span>
+          <input
+            type="text"
+            name="shortDescription"
+            placeholder="Please add course short description here..."
+            className="input input-bordered  w-1/2 max-w-96"
+            onChange={hdlChange}
+          />
+        </div>
       </header>
+
       <input type="file" onChange={hdlFileChange} />
+      {form.courseName &&
+      form.price &&
+      form.shortDescription &&
+      form.longDescription &&
+      file ? (
+        <button className="btn" onClick={hdlCreateCourse}>
+          Submit Course
+        </button>
+      ) : (
+        <button className="btn" disabled>
+          Submit Course
+        </button>
+      )}
       <div className="divider"></div>
       <div className="m-auto w-[300px] mt-10 bg-gray-100 ">
         {file ? (
@@ -78,8 +147,75 @@ function CreateCourse() {
           />
         )}
       </div>
+      <div className="flex justify-center mt-10 w-full">
+        <textarea
+          placeholder="รายละเอียดคอร์ส course details"
+          name="longDescription"
+          onChange={hdlChange}
+          className="textarea textarea-bordered textarea-lg w-full max-w-[1000px] border "
+          rows={10}
+        />
+      </div>
+
+      <div className="divider"></div>
+
+      {/* Create Unit part */}
+      <h1 className="text-2xl font-bold font-kanit mb-4">
+        บทเรียน <span className="font-noto-sans-jp text-2xl">ユニット</span>
+      </h1>
+      <div className="font-kanit">
+        <div className="flex  gap-5 items-center">
+          <button
+            type="button"
+            onClick={addUnit}
+            className="btn btn-secondary "
+          >
+            Add Unit
+          </button>
+        </div>
+        <div className="mt-8">
+          <h3 className="text-xl font-bold mb-4">Course Units</h3>
+          {units.map((unit, index) => (
+            <div key={index} className="mb-4 p-4 border rounded">
+              <h4 className="text-lg font-semibold">Unit {unit.unitNumber}</h4>
+              <input
+                type="text"
+                name="title"
+                value={unit.title}
+                onChange={(e) => hdlUnitChange(index, e)}
+                placeholder="Unit Title"
+                className="input input-bordered w-full mt-2"
+              />
+              <input
+                type="text"
+                name="description"
+                value={unit.description}
+                onChange={(e) => hdlUnitChange(index, e)}
+                placeholder="Unit Description"
+                className="input input-bordered w-full mt-2"
+              />
+              <input
+                type="text"
+                name="youtubeLink"
+                value={unit.youtubeLink}
+                onChange={(e) => hdlUnitChange(index, e)}
+                placeholder="YouTube Link"
+                className="input input-bordered w-full mt-2"
+              />
+              {units.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeUnit(index)}
+                  className="btn btn-error mt-2"
+                >
+                  Remove Unit
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-    
   );
 }
 

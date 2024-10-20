@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import useAuthStore from "../../../store/authStore";
 
 export default function InsideArticle() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState([]);
-  const [latestArticle,setLatestArticle] = useState([])
+  const [latestArticle, setLatestArticle] = useState([]);
+  const token = useAuthStore(state=>state.token)
 
   const getArticle = async (id) => {
     const response = await axios.get(
-      "http://localhost:8000/article/getarticle/" + id
+      "http://localhost:8000/article/getarticle/" + id,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
     );
     setData(response.data);
   };
@@ -20,19 +25,19 @@ export default function InsideArticle() {
       "http://localhost:8000/article/getlatestarticle"
     );
     setLatestArticle(response.data);
-    console.log(response.data)
+    console.log(response.data);
   };
 
   useEffect(() => {
     getArticle(id);
-    getLatestArticle()
+    getLatestArticle();
   }, [id]);
 
   const formattedDate = data.createdDate
     ? new Date(data.createdDate).toLocaleDateString()
     : "";
-  
-    const articleFormattedDate = latestArticle.createdDate
+
+  const articleFormattedDate = latestArticle.createdDate
     ? new Date(latestArticle.createdDate).toLocaleDateString()
     : "";
 
@@ -72,15 +77,20 @@ export default function InsideArticle() {
             <h2 className="text-2xl font-bold mb-4 mt-4">บทความล่าสุด</h2>
 
             {latestArticle.map((item) => (
-              
               <div key={item.id} className="mb-3">
-                <Link to = {'/article/'+item.id}>
-                <img src={item.articleThumbnailLink} alt="" className="bg-pink-100  w-full mb-2 cursor-pointer"/>
-               
+                <Link to={"/article/" + item.id}>
+                  <img
+                    src={item.articleThumbnailLink}
+                    alt=""
+                    className="bg-pink-100  w-full mb-2 cursor-pointer"
+                  />
                 </Link>
                 <h3 className="font-bold mb-1">{item.articleName}</h3>
-                <span>Created at 
-                  </span><span className="text-gray-500 text-sm"> {item.createdDate.slice(0,10)}</span>
+                <span>Created at</span>
+                <span className="text-gray-500 text-sm">
+                  {" "}
+                  {item.createdDate.slice(0, 10)}
+                </span>
               </div>
             ))}
           </div>

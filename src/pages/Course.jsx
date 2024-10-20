@@ -6,19 +6,30 @@ import CourseCard from "../components/CourseCard";
 
 function Course() {
   const role = useAuthStore((state) => state.role);
+  const [course, setCourse] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  //reverse 
+  const reversedCourse = [...course].reverse();
 
+  //  // Pagination logic
+   const indexOfLastCourse = currentPage * itemsPerPage;
+   const indexOfFirstCourse = indexOfLastCourse - itemsPerPage;
+   const currentCourse = reversedCourse.slice(indexOfFirstCourse, indexOfLastCourse);
+   const totalPages = Math.ceil(course.length / itemsPerPage);
 
- //reverse 
-//  const reversedArticles = [...article].reverse();
+   const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
-//  // Pagination logic
-//  const indexOfLastArticle = currentPage * itemsPerPage;
-//  const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-//  const currentArticles = reversedArticles.slice(indexOfFirstArticle, indexOfLastArticle);
-//  const totalPages = Math.ceil(article.length / itemsPerPage);
+  useEffect(()=>{
+    getAllCourse();
+  },[])
 
- const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
- const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const getAllCourse = async ()=>{
+    const response = await axios.get('http://localhost:8000/course/getallcourse')
+    setCourse(response.data.allCourse)
+  }
+
 
 
   return (
@@ -61,7 +72,7 @@ function Course() {
       </div>
 
       {/* Pagination controls */}
-      {/* <div className="flex justify-center mb-10 items-center">
+      <div className="flex justify-center mb-10 items-center">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
@@ -79,17 +90,13 @@ function Course() {
         >
           Next
         </button>
-      </div> */}
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+      {currentCourse.map((item) => (
+          <CourseCard key={item.id} item={item} />
+        ))}
+        
       </div>
     </div>
   );

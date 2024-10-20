@@ -1,6 +1,8 @@
 import React from "react";
 import { FacebookLogo, InstagramLogo, TiktokLogo, YoutubeLogo } from "../icons";
 
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <div>
@@ -10,18 +12,34 @@ function Footer() {
             <p>&copy; 2024 copyright by sarupsaisin</p>
             <div className="flex space-x-4">
               {/* Replace these with actual icons or use plain text */}
-              <span>
+              <a
+                href="https://www.facebook.com/sarupsaisin"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FacebookLogo className="w-8" />
-              </span>
-              <span>
+              </a>
+              <a
+                href="https://www.youtube.com/@sarupsaisin "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <YoutubeLogo className="w-8" />
-              </span>
-              <span>
+              </a>
+              <a
+                href="https://www.tiktok.com/@sarupsaisin "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <TiktokLogo className="w-8" />
-              </span>
-              <span>
+              </a>
+              <a
+                href="https://www.instagram.com/sarupsaisin/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <InstagramLogo className="w-8" />
-              </span>
+              </a>
             </div>
           </div>
         </div>
