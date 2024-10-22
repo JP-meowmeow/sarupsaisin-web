@@ -12,8 +12,8 @@ export default function CreateArticle() {
   const [form, setForm] = useState({
     header: "",
     detail: "",
+    category: "",
   });
-
 
   const hdlChange = (e) => {
     setForm((prv) => ({ ...prv, [e.target.name]: e.target.value }));
@@ -34,7 +34,7 @@ export default function CreateArticle() {
       if (file) {
         body.append("link", file);
       }
-     await createArticle(body, token);
+      await createArticle(body, token);
       navigate("/article");
 
       toast.success("create article");
@@ -66,8 +66,21 @@ export default function CreateArticle() {
           </button>
         )}
       </header>
-      
+
       <input type="file" onChange={hdlFileChange} />
+      <select
+        name="category"
+        className="select select-bordered w-[150px] max-w-xs"
+        onChange={hdlChange}
+      >
+        <option disabled selected>
+          Category
+        </option>
+        <option value="JLPTN5">JLPT N5</option>
+        <option value="JLPTN4">JLPT N4</option>
+        <option value="JLPTN3">JLPT N3</option>
+        <option value="OTHER">OTHER</option>
+      </select>
       <div className="divider"></div>
       <div className="m-auto w-[300px] mt-10 bg-gray-100 ">
         {file ? (

@@ -1,29 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import YouTubeEmbed from "../../components/YoutubeEmbed";
-
+import useAuthStore from "../../../store/authStore";
+import { LockLogo } from "../../../src/icons/index";
 const CourseDetail = () => {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
   const [activeUnit, setActiveUnit] = useState(null);
+  const [buyStatus, setBuyStatus] = useState(false);
+  const token = useAuthStore((state) => state.token);
 
   useEffect(() => {
-    const fetchCourse = async () => {
+    const isBuy = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/enrollment/" + id,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        console.log(response);
+        setBuyStatus(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const getCourse = async () => {
       try {
         const response = await axios.get(
           `http://localhost:8000/course/getcourse/${id}`
         );
         setCourse(response.data);
-        if (response.data.units.length > 0) {
+        if (response.data.units?.length > 0) {
           setActiveUnit(response.data.units[0]);
         }
       } catch (error) {
         console.error("Error fetching course:", error);
       }
     };
-
-    fetchCourse();
+    isBuy();
+    getCourse();
   }, [id]);
 
   if (!course) {
@@ -64,34 +82,70 @@ const CourseDetail = () => {
         </div>
         <div className="flex flex-col gap-5">
           <div className="bg-gray-100 p-4 rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">Course Units</h3>
+            <h3 className="text-xl font-semibold mb-2">
+              บทเรียนทั้งหมดของคอร์ส
+            </h3>
             <ul>
-              {course.unit.map((unit) => (
-                <li key={unit.id} className="mb-2">
-                  <button
-                    onClick={() => setActiveUnit(unit)}
-                    className={`w-full text-left p-2 rounded ${
-                      activeUnit && activeUnit.id === unit.id
-                        ? "bg-blue-500 text-white"
-                        : "hover:bg-gray-200"
-                    }`}
-                  >
-                    Unit {unit.unitNumber}: {unit.title}
-                  </button>
-                </li>
-              ))}
+              {buyStatus
+                ? course.unit.map((unit) => (
+                    <li key={unit.id} className="mb-2">
+                      <button
+                        onClick={() => setActiveUnit(unit)}
+                        className={`w-full text-left p-2 rounded ${
+                          activeUnit && activeUnit.id === unit.id
+                            ? "bg-blue-500 text-white"
+                            : "hover:bg-gray-200"
+                        }`}
+                      >
+                        บทเรียน {unit.unitNumber}: {unit.title}
+                      </button>
+                    </li>
+                  ))
+                : course.unit.map((unit) => (
+                    <li key={unit.id} className="mb-2">
+                      <button
+                        disabled
+                        onClick={() => setActiveUnit(unit)}
+                        className={`w-full text-left p-2 rounded flex items-center gap-2 ${
+                          activeUnit && activeUnit.id === unit.id
+                            ? "bg-blue-500 text-white"
+                            : "hover:bg-gray-200"
+                        }`}
+                      >
+                        <span>
+                          บทเรียน {unit.unitNumber}: {unit.title}{" "}
+                        </span>
+                          <LockLogo className="w-4" />
+                      </button>
+                    </li>
+                  ))}
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg mb-4">
-            <h3 className="text-xl font-semibold mb-2">Course Information</h3>
-            <p className="mb-2">Price: ${course.price}</p>
-            <img
-              src={course.courseThumbnailLink}
-              alt={course.courseName}
-              className="w-full rounded-lg"
-            />
-            <button className="btn btn-primary w-full mt-4">Enroll Now</button>
-          </div>
+          {buyStatus ? (
+            <div></div>
+          ) : (
+            <div className="bg-gray-100 p-4 rounded-lg mb-4">
+              <h3 className="text-xl font-semibold mb-2">ข้อมูลคอร์สเรียน</h3>
+              <p className="mb-2">ราคา: {course.price} บาท</p>
+              <img
+                src={course.courseThumbnailLink}
+                alt={course.courseName}
+                className="w-full rounded-lg"
+              />
+              {token ? (
+                <Link
+                  to={`/payment/${id}`}
+                  className="btn btn-primary w-full mt-4"
+                >
+                  สมัครเรียนคอร์สเลย
+                </Link>
+              ) : (
+                <Link to={`/register`} className="btn btn-primary w-full mt-4">
+                  สมัครสมาชิก メンバー登録
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

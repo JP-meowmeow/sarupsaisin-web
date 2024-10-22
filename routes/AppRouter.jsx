@@ -10,7 +10,7 @@ import Test from "../src/pages/Test";
 import Course from "../src/pages/Course";
 import Register from "../src/pages/Register";
 import App from "../src/App";
-import Layout from "../src/layout/layout";
+import Layout from "../src/layout/Layout";
 import Home from "../src/pages/Home";
 import Article from "../src/pages/Article";
 import UserInfo from "../src/pages/UserInfo";
@@ -22,6 +22,8 @@ import InsideCourse from "../src/pages/pages-inside/InsideCourse";
 import CreateCourse from "../src/pages/pages-inside/CreateCourse";
 import EditArticle from "../src/pages/pages-inside/EditArticle";
 import EditCourse from "../src/pages/pages-inside/EditCourse";
+import Payment from "../src/pages/Payment";
+import UserData from "../src/pages/UserData";
 
 function AppRouter() {
   const { user, token, logout } = useAuthStore();
@@ -33,25 +35,33 @@ function AppRouter() {
         { index: true, element: <Home /> },
         { path: "about", element: <AboutUs /> },
         { path: "test", element: <Test /> },
-
+        
         { path: "course", element: <Course /> },
         { path: "course/:id", element:<InsideCourse/> },
         { path: "course/create", element: <CreateCourse /> },
         { path: `course/edit/:id`, element: <EditCourse/>},
-
+        
         { path: "login", element: token ? <Navigate to="/" /> : <Login /> },
         {
           path: "register",
           element: token ? <Navigate to="/" /> : <Register />,
         },
-
+        
         { path: "article", element: <Article /> },
         { path: "article/:id", element: <InsideArticle /> },
         { path: "article/create", element: <CreateArticle /> },
         { path: `article/edit/:id`, element: <EditArticle /> },
-
-        { path: "userinfo", element: <UserInfo /> },
-
+        
+        //dash board
+        { path: "userinfo", element: <UserInfo/> }, //dashboard-user
+        {path:'admin/userdata',element:<UserData/>}, //dashboard-admin for check slip
+        
+        
+        //payment page 
+        { path:"payment/:id",element:<Payment/>},
+        
+        
+        
         { path: "*", element: <PageNotFound /> },
       ],
     },

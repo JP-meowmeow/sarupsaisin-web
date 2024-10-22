@@ -5,7 +5,7 @@ import useAuthStore from "../../store/authStore";
 // #FCFBF8 สีเหลืองอ่อน
 
 function Navbar() {
-  const { user, token, logout } = useAuthStore();
+  const { user, token, logout, role } = useAuthStore();
   const handleLogout = () => {
     logout();
   };
@@ -59,29 +59,41 @@ function Navbar() {
                   tabIndex={0}
                   className="dropdown-content menu bg-base-100 rounded-box z-[1] w-auto p-2 shadow"
                 >
-                  <li>
-                    <p>
+                  <li className="p-2">
                       {" "}
-                      <Link to='/userinfo' className="btn btn-sm h-12 w-60 bg-[#F3747F]">
+                      <Link
+                        to="/userinfo"
+                        className="btn btn-sm h-12 w-60  bg-[#F3747F]"
+                      >
                         Dashboard
                       </Link>
-                    </p>
                   </li>
-                  <li>
-                    <p>
-                      <Link to='/'
+
+                  {role === "ADMIN" && (
+                    <li className="p-2">
+                      <Link
+                        to="/admin/userdata"
+                        className="btn btn-sm h-12 w-60 bg-[#F3747F]"
+                      >
+                        Check slip
+                      </Link>
+                    </li>
+                  )}
+
+                  <li className="p-2">
+                      <Link
+                        to="/"
                         onClick={handleLogout}
                         className="btn btn-sm h-12 w-60 bg-[#F3747F]"
                       >
                         Logout
                       </Link>
-                    </p>
                   </li>
                 </ul>
               </div>
             ) : (
               <div className="flex gap-10 ">
-                <Link to="/login"  >
+                <Link to="/login">
                   <button className="btn btn-sm h-12 w-32 bg-[#F3747F] ">
                     <div className="flex flex-col gap-2">
                       <p>Log-in</p>

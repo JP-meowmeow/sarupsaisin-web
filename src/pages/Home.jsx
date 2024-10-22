@@ -4,20 +4,10 @@ function Home() {
   return (
     <div>
       <div className="flex flex-col min-h-screen bg-[#FCFBF8]">
-        {/* Header */}
-        {/* <Navbar /> */}
-        {/* Main Content */}
-        <div className="pt-12">
-          <div>
-            <img
-              src="./src/images/logo pink.png"
-              alt=""
-              className="absolute right-16 w-[600px] top-28  "
-            />
-          </div>
-          <main className="flex-grow container mx-auto px-4 py-8 pt-16">
-            {/* Hero Section */}
-            <div className="flex flex-col md:flex-row mb-8">
+        <div className="pt-16">
+          <div className="grid grid-cols-1">
+            <main className="col-start-1 row-start-1 flex-grow container mx-auto px-4 py-8 pt-16 relative ">
+            <div className="flex flex-col md:flex-row">
               <div className="w-full md:w-1/2 aspect-video flex items-center justify-center text-white text-2xl mb-4 md:mb-0">
                 <iframe
                   width="1400"
@@ -47,6 +37,17 @@ function Home() {
                 </div>
               </div>
             </div>
+            </main>
+            <div className="col-start-1 row-start-1 justify-self-end mt-12 mr-24">
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566776/logo_pink_z8sarx.png"
+                alt=""
+                className="w-[600px]"
+              />
+            </div>
+          </div>
+          <main className="flex-grow container mx-auto px-4 -my-10">
+           
 
             {/* Course Section */}
             <div className="mb-8">
@@ -82,7 +83,7 @@ function Home() {
 
             {/* Popular Article Section */}
             <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4 font-kanit ">
+              <h2 className="text-2xl font-bold mb-4 font-kanit ">
                 บทความที่น่าสนใจ{" "}
                 <span className="font-noto-sans-jp text-2xl">記事</span>
               </h2>
@@ -105,7 +106,6 @@ function Home() {
                 />
               </div>
               <div className="flex  justify-center">
-                
                 <button className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
                   {" "}
                   all article บทความที่น่าสนใจทั้งหมด{" "}

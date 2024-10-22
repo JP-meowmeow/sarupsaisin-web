@@ -19,7 +19,7 @@ const useAuthStore = create(
         }
       },
       logout: () => {
-        set({ token: "", user: null });
+        set({ token: "", user: null,role:null });
       },
     }),
     {

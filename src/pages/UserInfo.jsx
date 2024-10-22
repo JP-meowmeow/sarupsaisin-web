@@ -11,16 +11,27 @@ function UserInfo() {
   const [articleData, setArticleData] = useState([]);
   const [courseData, setCourseData] = useState([]);
 
+  const [userCourseData,setUserCourseData] = useState([]);
+
   useEffect(() => {
     const run = async () => {
       await getArticle();
       await getCourse();
-      console.log("article", articleData);
-      console.log("course", courseData);
+      await getUserCourse();
     };
 
     run();
   }, [articleData.length]);
+
+  async function getUserCourse(){
+    const response = await axios.get(
+      'http://localhost:8000/enrollment/getuserbuycoursedata',{
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+    setUserCourseData(response.data)
+    console.log(response.data)
+  }
 
   async function getArticle() {
     const response = await axios.get(
@@ -92,6 +103,11 @@ function UserInfo() {
               คอร์สเรียนของฉัน{" "}
               <span className="font-noto-sans-jp text-2xl">買ったコース</span>
             </h1>
+            <div className="flex gap-5 mb-5">
+              {userCourseData.map((item) => (
+                <CourseCardDashboard key={item.id} item={item.course} />
+              ))}
+            </div>
             <div className="divider"></div>
             <h1 className="text-2xl font-bold font-kanit mb-16">
               หนังสือเรียน/ข้อสอบของฉัน{" "}

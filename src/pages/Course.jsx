@@ -7,6 +7,7 @@ import CourseCard from "../components/CourseCard";
 function Course() {
   const role = useAuthStore((state) => state.role);
   const [course, setCourse] = useState([]);
+  const [allCourse,setAllCourse] =useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   //reverse 
@@ -25,9 +26,48 @@ function Course() {
     getAllCourse();
   },[])
 
+  const filterN5 = () => {
+    const JLPTN5 = allCourse.filter((item) => {
+      return item.category === "JLPTN5";
+    });
+
+    setCourse(JLPTN5);
+  };
+
+  const filterN4 = () => {
+    const JLPTN4 = allCourse.filter((item) => {
+      return item.category === "JLPTN4";
+    });
+
+    setCourse(JLPTN4);
+  };
+
+  const filterN3 = () => {
+    const JLPTN3 = allCourse.filter((item) => {
+      return item.category === "JLPTN3";
+    });
+
+    setCourse(JLPTN3);
+  };
+
+  const filterOther = () => {
+    const OTHER = allCourse.filter((item) => {
+      return item.category === "OTHER";
+    });
+
+    setCourse(OTHER);
+  };
+
+  const filterAll = () => {
+  
+    setCourse(allCourse);
+  };
+
+
   const getAllCourse = async ()=>{
     const response = await axios.get('http://localhost:8000/course/getallcourse')
     setCourse(response.data.allCourse)
+    setAllCourse(response.data.allCourse)
   }
 
 
@@ -64,11 +104,11 @@ function Course() {
             Create course
           </Link>
         ) : null}
-        <button className="btn btn-sm">JLPT N5</button>
-        <button className="btn btn-sm">JLPT N4</button>
-        <button className="btn btn-sm">JLPT N3</button>
-        <button className="btn btn-sm font-noto-sans-jp">その他</button>
-        <button className="btn btn-sm">All</button>
+        <button className="btn btn-sm" onClick={filterN5}>JLPT N5</button>
+        <button className="btn btn-sm" onClick={filterN4}>JLPT N4</button>
+        <button className="btn btn-sm" onClick={filterN3}>JLPT N3</button>
+        <button className="btn btn-sm font-noto-sans-jp" onClick={filterOther}>その他</button>
+        <button className="btn btn-sm" onClick={filterAll}>All</button>
       </div>
 
       {/* Pagination controls */}

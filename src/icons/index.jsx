@@ -29,6 +29,24 @@ export function TiktokLogo(props) {
     </svg>
   )
 }
+export function LockLogo(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M3 3l18 18m-4-11V8a5 5 0 00-7.646-4.243m-2.27 3.326A5.029 5.029 0 007 8v2.029m12.561 9.533a3 3 0 01-1.199 1.111C17.72 21 16.88 21 15.2 21H8.8c-1.68 0-2.52 0-3.162-.327a3 3 0 01-1.311-1.311C4 18.72 4 17.88 4 16.2v-1.4c0-1.68 0-2.52.327-3.162a3 3 0 011.311-1.311c.356-.181.774-.262 1.362-.298m13 4.373c-.002-1.419-.027-2.175-.327-2.764a3 3 0 00-1.311-1.311c-.589-.3-1.345-.325-2.764-.327M10 10H8.8c-.747 0-1.329 0-1.8.029"
+        stroke="#000"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
 
 export function InstagramLogo(props) {
   return (

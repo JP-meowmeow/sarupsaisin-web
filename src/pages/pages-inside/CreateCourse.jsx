@@ -14,6 +14,7 @@ function CreateCourse() {
     courseName: "",
     shortDescription: "",
     longDescription: "",
+    category: "",
     price: "",
   });
 
@@ -61,6 +62,7 @@ function CreateCourse() {
       body.append("shortDescription", form.shortDescription);
       body.append("longDescription", form.longDescription);
       body.append("price", form.price);
+      body.append("category", form.category);
       body.append("units", JSON.stringify(units));
       if (file) {
         body.append("link", file);
@@ -105,14 +107,32 @@ function CreateCourse() {
               onChange={hdlChange}
             />
           </div>
-          <span>Course description : </span>
-          <input
-            type="text"
-            name="shortDescription"
-            placeholder="Please add course short description here..."
-            className="input input-bordered  w-1/2 max-w-96"
-            onChange={hdlChange}
-          />
+          <div className="flex gap-5">
+            <div>
+              <span>Course description : </span>
+
+              <input
+                type="text"
+                name="shortDescription"
+                placeholder="Please add course short description here..."
+                className="input input-bordered  w-[350px] max-w-96"
+                onChange={hdlChange}
+              />
+            </div>
+            <select
+              name="category"
+              className="select select-bordered w-[150px] max-w-xs"
+              onChange={hdlChange}
+            >
+              <option disabled selected>
+                Category
+              </option>
+              <option value="JLPTN5">JLPT N5</option>
+              <option value="JLPTN4">JLPT N4</option>
+              <option value="JLPTN3">JLPT N3</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+          </div>
         </div>
       </header>
 
@@ -130,6 +150,7 @@ function CreateCourse() {
           Submit Course
         </button>
       )}
+
       <div className="divider"></div>
       <div className="m-auto w-[300px] mt-10 bg-gray-100 ">
         {file ? (

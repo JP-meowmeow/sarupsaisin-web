@@ -6,6 +6,7 @@ import useAuthStore from "../../store/authStore";
 export default function CourseCardDashboard({ item }) {
   const [course,setCourse] = useState([])
   const token = useAuthStore((state) => state.token);
+  const role = useAuthStore((state) => state.role);
 
   const hdlDelete = async () => {
     const response = await axios.delete(
@@ -33,22 +34,29 @@ export default function CourseCardDashboard({ item }) {
           <span><h2 className="card-title justify-end pb-1">{
             item.price} บาท </h2></span>
           <div className="card-actions justify-between flex">
-            <div className="flex gap-5">
+           
+              {
+                role ==="ADMIN" 
+                ?( <div className="flex gap-5">
+                  <button
+                    onClick={hdlDelete}
+                    className="btn btn-outline btn-error font-noto-sans-jp"
+                  >
+                    Delete
+                  </button>
+                  
+                  <Link
+                    to={`/course/edit/`+item.id}
+                    className="btn btn-outline btn-success font-noto-sans-jp px-5"
+                  >
+                    Edit
+                  </Link>
+                </div>)
+                :(
+                  <div></div>
+                )
+              }
               
-              <button
-                onClick={hdlDelete}
-                className="btn btn-outline btn-error font-noto-sans-jp"
-              >
-                Delete
-              </button>
-              
-              <Link
-                to={`/course/edit/`+item.id}
-                className="btn btn-outline btn-success font-noto-sans-jp px-5"
-              >
-                Edit
-              </Link>
-            </div>
             <Link
               to={"/course/" + item.id}
               className="btn btn-primary font-noto-sans-jp"
