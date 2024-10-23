@@ -83,10 +83,10 @@ function Tiktok() {
       {tiktokVideos.map((video, index) => (
         <blockquote
           key={index}
-          className="tiktok-embed "
+          className="tiktok-embed  "
           cite={video.cite}
           data-video-id={video.videoId}
-          style={{ maxWidth: "605px", minWidth: "325px", marginBottom: "20px" }}
+          style={{ maxWidth: "605px", minWidth: "325px", marginBottom: "20px"}}
         >
           {video.content}
         </blockquote>

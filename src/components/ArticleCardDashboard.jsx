@@ -3,19 +3,9 @@ import { Link } from "react-router-dom";
 import axios, { Axios } from "axios";
 import useAuthStore from "../../store/authStore";
 
-export default function ArticleCardDashboard({ item }) {
+export default function ArticleCardDashboard({ item,onDelete }) {
   const [article,setArticle] = useState([])
   const token = useAuthStore((state) => state.token);
-
-  const hdlDelete = async () => {
-    const response = await axios.delete(
-      `http://localhost:8000/article/deletearticle/${item.id}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    setArticle(response)
-  };
 
   return (
     <div>
@@ -33,7 +23,7 @@ export default function ArticleCardDashboard({ item }) {
           <div className="card-actions justify-between flex">
             <div className="flex gap-5">
               <button
-                onClick={hdlDelete}
+                onClick={onDelete}
                 className="btn btn-outline btn-error font-noto-sans-jp"
               >
                 Delete

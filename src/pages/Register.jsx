@@ -82,7 +82,7 @@ function Register() {
               </div>
               <div className="flex items-center justify-between">
                 <div></div>
-                <button className="bg-[#F3747F] text-white px-4 py-2 rounded-md font-kanit">
+                <button className="btn btn-l bg-[#F3747F] text-white px-4 py-2 rounded-md font-kanit">
                   Register | <span className="font-noto-sans-jp">登録</span>
                 </button>
               </div>

@@ -23,8 +23,8 @@ function CourseCard({item}) {
           <div className="card-actions justify-end">
             <div>
 
-          <h2 className="card-title justify-end pb-1">{
-            item.price} บาท </h2>
+          <h2 className="card-title justify-end pb-1">
+            {item.isFree ==="FREE" ?item.isFree :item.price + ' บาท'}  </h2>
             <Link
               to={"/course/"+item.id}
               className="btn btn-primary font-noto-sans-jp"

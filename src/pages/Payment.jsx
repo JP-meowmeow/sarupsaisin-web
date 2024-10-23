@@ -20,6 +20,8 @@ export default function Payment() {
     try {
       const body = new FormData();
       body.append("link", slip);
+      body.append("CourseName", course.courseName);
+      body.append("price", course.price);
 
       await sendSlip(body, token);
       navigate('/userinfo')

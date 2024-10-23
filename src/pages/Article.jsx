@@ -21,7 +21,6 @@ function Article() {
     );
     setArticle(response.data.allArticle);
     setAllArticle(response.data.allArticle);
-    console.log(response.data.allArticle);
   };
 
   const filterN5 = () => {
@@ -57,11 +56,8 @@ function Article() {
   };
 
   const filterAll = () => {
-  
     setArticle(allArticle);
   };
-
-
 
   //reverse
   const reversedArticles = [...article].reverse();
@@ -80,7 +76,7 @@ function Article() {
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="mx-64 m-16 font-kanit">
+    <div className="mx-32 m-16 font-kanit">
       <div className="pt-10 flex justify-center">
         <h2 className="text-2xl font-bold mb-4 font-kanit ">
           บทความที่น่าสนใจ
@@ -117,10 +113,18 @@ function Article() {
         <button className="btn btn-sm" onClick={filterN5}>
           JLPT N5
         </button>
-        <button className="btn btn-sm" onClick={filterN4}>JLPT N4</button>
-        <button className="btn btn-sm" onClick={filterN3}>JLPT N3</button>
-        <button className="btn btn-sm font-noto-sans-jp" onClick={filterOther}>その他</button>
-        <button className="btn btn-sm" onClick={filterAll}>All</button>
+        <button className="btn btn-sm" onClick={filterN4}>
+          JLPT N4
+        </button>
+        <button className="btn btn-sm" onClick={filterN3}>
+          JLPT N3
+        </button>
+        <button className="btn btn-sm font-noto-sans-jp" onClick={filterOther}>
+          その他
+        </button>
+        <button className="btn btn-sm" onClick={filterAll}>
+          All
+        </button>
       </div>
 
       {/* Pagination controls */}
@@ -144,24 +148,11 @@ function Article() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-4  gap-y-5">
         {currentArticles.map((item) => (
           <ArticleCard key={item.id} item={item} />
         ))}
       </div>
-
-      {/* Slide showcase */}
-      {/* <div className="flex justify-center mt-10">
-        <div className="flex justify-center items-center relative w-[600px] shadow-2xl">
-          <button className="w3-button w3-display-left absolute left-0 text-[50px]" onClick={() => changeSlide(-1)}>
-            &#10094;
-          </button>
-          <img src={slides[slideIndex]} alt="slide" className="mySlides w-full h-auto" />
-          <button className="w3-button w3-display-right absolute right-0 text-[50px]" onClick={() => changeSlide(1)}>
-            &#10095;
-          </button>
-        </div>
-      </div> */}
     </div>
   );
 }

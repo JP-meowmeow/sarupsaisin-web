@@ -20,7 +20,6 @@ const CourseDetail = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        console.log(response);
         setBuyStatus(response.data);
       } catch (err) {
         console.log(err);
@@ -36,6 +35,7 @@ const CourseDetail = () => {
         if (response.data.units?.length > 0) {
           setActiveUnit(response.data.units[0]);
         }
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching course:", error);
       }
@@ -86,7 +86,22 @@ const CourseDetail = () => {
               บทเรียนทั้งหมดของคอร์ส
             </h3>
             <ul>
-              {buyStatus
+              {course.isFree === "FREE"
+                ? course.unit.map((unit) => (
+                    <li key={unit.id} className="mb-2">
+                      <button
+                        onClick={() => setActiveUnit(unit)}
+                        className={`w-full text-left p-2 rounded ${
+                          activeUnit && activeUnit.id === unit.id
+                            ? "bg-blue-500 text-white"
+                            : "hover:bg-gray-200"
+                        }`}
+                      >
+                        บทเรียน {unit.unitNumber}: {unit.title}
+                      </button>
+                    </li>
+                  ))
+                : buyStatus
                 ? course.unit.map((unit) => (
                     <li key={unit.id} className="mb-2">
                       <button
@@ -115,13 +130,15 @@ const CourseDetail = () => {
                         <span>
                           บทเรียน {unit.unitNumber}: {unit.title}{" "}
                         </span>
-                          <LockLogo className="w-4" />
+                        <LockLogo className="w-4" />
                       </button>
                     </li>
                   ))}
             </ul>
           </div>
-          {buyStatus ? (
+          {course.isFree === "FREE" ? (
+            <div></div>
+          ) : buyStatus ? (
             <div></div>
           ) : (
             <div className="bg-gray-100 p-4 rounded-lg mb-4">

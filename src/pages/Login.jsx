@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Facebook } from "lucide-react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
 
 const Login = () => {
@@ -82,14 +82,14 @@ const Login = () => {
                 <input type="checkbox" className="mr-2" />
                 <span className="text-sm text-gray-600">Remember me</span>
                 </label> */}
-                  <button className="bg-[#F3747F] text-white px-4 py-2 rounded-md w-full">
+                  <button className="btn btn-l bg-[#F3747F] text-white px-4  rounded-md w-full ">
                     LOGIN
                   </button>
                 </div>
                 <div className="text-sm text-[#F3747F]">
-                  <a href="#">Register 登録</a>
+                  <Link to="/register" >Register 登録</Link>
                   <span className="mx-2 text-gray-300">|</span>
-                  <a href="#">Forgot password? 忘れちゃった？ </a>
+                  <Link to="/forgot-password">Forgot password? 忘れちゃった？ </Link>
                 </div>
               </form>
               <div className="mt-6 space-y-2">

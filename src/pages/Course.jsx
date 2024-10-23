@@ -73,7 +73,7 @@ function Course() {
 
 
   return (
-    <div className="mx-64 m-16 font-kanit">
+    <div className="mx-32 m-16 font-kanit">
       <div className="pt-10 flex justify-center">
         <h2 className="text-2xl font-bold mb-4 font-kanit ">
           คอร์สเรียนภาษาญี่ปุ่น
@@ -132,7 +132,7 @@ function Course() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-4 gap-y-5 ">
       {currentCourse.map((item) => (
           <CourseCard key={item.id} item={item} />
         ))}

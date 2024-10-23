@@ -7,23 +7,30 @@ const useAuthStore = create(
   persist(
     (set, get) => ({
       user: null,
-      token: "",
-      role:'',
+      token: null,
+      role: null,
       login: async (form) => {
         try {
-          const response = await axios.post("http://localhost:8000/auth/login", form);
-          set({ token: response.data.token, user: response.data.user,role:response.data.role });
-          return response
+          const response = await axios.post(
+            "http://localhost:8000/auth/login",
+            form
+          );
+          set({
+            token: response.data.token,
+            user: response.data.user,
+            role: response.data.role,
+          });
+          return response;
         } catch (err) {
-          throw err
+          throw err;
         }
       },
       logout: () => {
-        set({ token: "", user: null,role:null });
+        set({ token: null, user: null, role: null });
       },
     }),
     {
-      name: "auth-state",//create key and value 
+      name: "auth-state", //create key and value
       storage: createJSONStorage(() => localStorage), //config
     }
   )

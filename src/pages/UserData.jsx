@@ -32,7 +32,6 @@ export default function UserData() {
 
   const updateBuyStatus = async (id) => {
     try {
-      console.log('id is',id)
       const response = await axios.patch(
         "http://localhost:8000/admin/updatebuystatus"
       ,{id:id});

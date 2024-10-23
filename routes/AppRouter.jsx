@@ -24,9 +24,11 @@ import EditArticle from "../src/pages/pages-inside/EditArticle";
 import EditCourse from "../src/pages/pages-inside/EditCourse";
 import Payment from "../src/pages/Payment";
 import UserData from "../src/pages/UserData";
+import ForgotPassword from "../src/pages/ForgetPassword";
+import ResetPassword from "../src/pages/ResetPassword";
 
 function AppRouter() {
-  const { user, token, logout } = useAuthStore();
+  const { user, token, logout, role } = useAuthStore();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -35,13 +37,23 @@ function AppRouter() {
         { index: true, element: <Home /> },
         { path: "about", element: <AboutUs /> },
         { path: "test", element: <Test /> },
-        
+
         { path: "course", element: <Course /> },
-        { path: "course/:id", element:<InsideCourse/> },
-        { path: "course/create", element: <CreateCourse /> },
-        { path: `course/edit/:id`, element: <EditCourse/>},
-        
+        { path: "course/:id", element: <InsideCourse /> },
+        {
+          path: "course/create",
+          element: role === "ADMIN" ? <CreateCourse /> : <Home />,
+        },
+        {
+          path: `course/edit/:id`,
+          element: role === "ADMIN" ? <EditCourse /> : <Home />,
+        },
+
         { path: "login", element: token ? <Navigate to="/" /> : <Login /> },
+        { path: "/forgot-password",
+          element:token ? <Home/> : <ForgotPassword/> },
+        { path: "/reset-password/:token",
+           element:token ? <Home/> : <ResetPassword/> },
         {
           path: "register",
           element: token ? <Navigate to="/" /> : <Register />,
@@ -49,19 +61,25 @@ function AppRouter() {
         
         { path: "article", element: <Article /> },
         { path: "article/:id", element: <InsideArticle /> },
-        { path: "article/create", element: <CreateArticle /> },
-        { path: `article/edit/:id`, element: <EditArticle /> },
-        
+        {
+          path: "article/create",
+          element: role === "ADMIN" ? <CreateArticle /> : <Home />,
+        },
+        {
+          path: `article/edit/:id`,
+          element: role === "ADMIN" ? <EditArticle /> : <Home />,
+        },
+
         //dash board
-        { path: "userinfo", element: <UserInfo/> }, //dashboard-user
-        {path:'admin/userdata',element:<UserData/>}, //dashboard-admin for check slip
-        
-        
-        //payment page 
-        { path:"payment/:id",element:<Payment/>},
-        
-        
-        
+        { path: "userinfo", element: token ? <UserInfo /> : <Home /> }, //dashboard-user
+        {
+          path: "admin/userdata",
+          element: role === "ADMIN" ? <UserData /> : <Home />,
+        }, //dashboard-admin for check slip
+
+        //payment page
+        { path: "payment/:id", element: token ? <Payment /> : <Home /> },
+
         { path: "*", element: <PageNotFound /> },
       ],
     },

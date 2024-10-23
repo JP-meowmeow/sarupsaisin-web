@@ -1,10 +1,13 @@
 import React from "react";
 import Tiktok from "../components/Tiktok";
+import {Link} from 'react-router-dom'
+import useAuthStore from '../../store/authStore'
 function Home() {
+  const token = useAuthStore((state)=>state.token)
   return (
     <div>
       <div className="flex flex-col min-h-screen bg-[#FCFBF8]">
-        <div className="pt-16">
+        <div className="p-16">
           <div className="grid grid-cols-1">
             <main className="col-start-1 row-start-1 flex-grow container mx-auto px-4 py-8 pt-16 relative ">
             <div className="flex flex-col md:flex-row">
@@ -28,12 +31,16 @@ function Home() {
                   สื่อการเรียนรู้ภาษาญี่ปุ่นของคนรุ่นใหม่
                 </p>
                 <div className="flex space-x-4">
-                  <button className="bg-[#F3747F] text-white px-4 py-2 rounded font-kanit ">
-                    เข้าสู่ระบบ
-                  </button>
-                  <button className="bg-[#F3747F] text-white px-4 py-2 rounded font-kanit">
+                  {token
+                  ?<div></div>
+                  :<Link to="/login" className="btn btn-sm bg-[#F3747F] text-white px-4 py-2 rounded font-kanit ">
+                  เข้าสู่ระบบ
+                </Link>
+                  }
+                  
+                  <Link to='/course/3' className="btn btn-sm bg-[#F3747F] text-white px-4 py-2  rounded font-kanit">
                     ทดลองเรียน
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -74,10 +81,10 @@ function Home() {
                 />
               </div>
               <div className="flex  justify-center">
-                <button className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
+                <Link to="/course" className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
                   {" "}
                   all course คอร์สเรียนทั้งหมด{" "}
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -106,10 +113,10 @@ function Home() {
                 />
               </div>
               <div className="flex  justify-center">
-                <button className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
+                <Link to='/article' className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
                   {" "}
                   all article บทความที่น่าสนใจทั้งหมด{" "}
-                </button>
+                </Link>
               </div>
             </div>
 
