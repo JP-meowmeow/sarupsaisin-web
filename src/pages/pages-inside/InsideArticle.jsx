@@ -10,6 +10,7 @@ export default function InsideArticle() {
   const [data, setData] = useState([]);
   const [latestArticle, setLatestArticle] = useState([]);
   const token = useAuthStore((state) => state.token);
+  
   const URL = import.meta.env.VITE_API_URL;
 
   const getArticle = async (id) => {
@@ -46,7 +47,7 @@ export default function InsideArticle() {
     : "";
 
   return (
-    <div className="mx-24 mt-16 pt-16 font-kanit">
+    <div className="mx-24 mt-16 pt-16 py-24 font-kanit">
       <div className="mx-16 flex justify-between -mb-5">
         <h1 className="text-2xl font-bold font-kanit ">{data.articleName}</h1>
         <h1>

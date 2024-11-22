@@ -54,7 +54,7 @@ export default function Payment() {
   const getCourse = async () => {
     try {
       // const response = await axios.get(`http://localhost:8000/payment/${id}`);
-      const response = await axios.get(`${URL}/${id}`);
+      const response = await axios.get(`${URL}/payment/${id}`);
       setCourse(response.data);
       console.log(response);
     } catch (error) {
