@@ -85,14 +85,26 @@ function Home() {
 
             {/* Course Images */}
             <div className="grid grid-cols-3 gap-2 lg:gap-4">
-              {["N3", "N4", "N5"].map((level, index) => (
+              {/* {["N3", "N4", "N5"].map((level, index) => (
                 <img
                   key={index}
                   src={`./src/images/course/JLPT ${level}.png`}
                   alt=""
                   className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
                 />
-              ))}
+              ))} */}
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566241/JLPT_N5_nmjstu.png"
+                className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+              />
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png"
+                className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+              />
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N4_odl9wh.png"
+                className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+              />
             </div>
 
             <div className="flex justify-center mt-4 sm:mt-8">
@@ -117,14 +129,27 @@ function Home() {
 
             {/* Article Images */}
             <div className="grid grid-cols-3 gap-2 lg:gap-4">
-              {[2, 1, 3].map((num, index) => (
+              {/* {[2, 1, 3].map((num, index) => (
                 <img
                   key={index}
                   src={`./src/images/articles/Article ${num}.png`}
                   alt=""
                   className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
                 />
-              ))}
+              ))} */}
+
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566187/Article_1_kmmg4j.png"
+                className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+              />
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566178/Article_2_dt8a4t.png"
+                className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+              />
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566178/Article_3_ch85fk.png"
+                className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+              />
             </div>
 
             <div className="flex justify-center mt-4 sm:mt-8">
@@ -147,7 +172,7 @@ function Home() {
             </h2>
             <div className="divider -mt-2"></div>
             <div className="mb-16">
-            <Tiktok />
+              <Tiktok />
             </div>
           </div>
         </div>
