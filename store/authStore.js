@@ -1,6 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+const URL = import.meta.env.VITE_API_URL;
 
 const useAuthStore = create(
   // make local storage,so when user refresh the webpage data token will not disappear
@@ -12,7 +13,8 @@ const useAuthStore = create(
       login: async (form) => {
         try {
           const response = await axios.post(
-            "http://localhost:8000/auth/login",
+            // "http://localhost:8000/auth/login",
+            `${URL}/auth/login`,
             form
           );
           set({

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAuthStore from "../../store/authStore";
+const URL = import.meta.env.VITE_API_URL;
 
 export default function Payment() {
   const token = useAuthStore((state) => state.token);
@@ -37,7 +38,8 @@ export default function Payment() {
   const sendSlip = async (body, token) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/payment/" + id,
+        // "http://localhost:8000/payment/" + id,
+        `${URL}/payment/` + id,
         body,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -51,7 +53,8 @@ export default function Payment() {
 
   const getCourse = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/payment/${id}`);
+      // const response = await axios.get(`http://localhost:8000/payment/${id}`);
+      const response = await axios.get(`${URL}/${id}`);
       setCourse(response.data);
       console.log(response);
     } catch (error) {

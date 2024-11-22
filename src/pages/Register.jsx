@@ -23,7 +23,8 @@ function Register() {
     try {
       e.preventDefault();
       const response = await axios.post(
-        "http://localhost:8000/auth/register",
+        // "http://localhost:8000/auth/register",
+        `${process.env.VITE_API_URL}/auth/register`,
         form
       );
 

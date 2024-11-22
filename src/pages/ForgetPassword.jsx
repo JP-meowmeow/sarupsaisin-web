@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+const URL = import.meta.env.VITE_API_URL;
+
+
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +14,8 @@ function ForgotPassword() {
     setIsLoading(true);
 
     try {
-      await axios.post("http://localhost:8000/auth/forgot-password", { email });
+      // await axios.post("http://localhost:8000/auth/forgot-password", { email });
+      await axios.post(`${URL}/auth/forgot-password`, { email });
       toast.success("Password reset email sent! Please check your inbox.");
     } catch (err) {
       toast.error(err.response?.data?.error || "Something went wrong");

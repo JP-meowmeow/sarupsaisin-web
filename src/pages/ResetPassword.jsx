@@ -18,7 +18,8 @@ function ResetPassword() {
 
     setIsLoading(true);
     try {
-      await axios.post(`http://localhost:8000/auth/reset-password/${token}`, { 
+      // await axios.post(`http://localhost:8000/auth/reset-password/${token}`, { 
+      await axios.post(`${process.env.VITE_API_URL}/auth/reset-password/${token}`, { 
         password 
       });
       toast.success('Password reset successful!');

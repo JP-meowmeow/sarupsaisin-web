@@ -10,12 +10,14 @@ const CourseDetail = () => {
   const [activeUnit, setActiveUnit] = useState(null);
   const [buyStatus, setBuyStatus] = useState(false);
   const token = useAuthStore((state) => state.token);
+  const URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const isBuy = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/enrollment/" + id,
+          // "http://localhost:8000/enrollment/" + id,
+          `${URL}/enrollment/` + id,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -29,7 +31,8 @@ const CourseDetail = () => {
     const getCourse = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/course/getcourse/${id}`
+          // `http://localhost:8000/course/getcourse/${id}`
+          `${URL}/course/getcourse/${id}`
         );
         setCourse(response.data);
       } catch (error) {

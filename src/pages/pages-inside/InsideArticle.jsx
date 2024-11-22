@@ -10,11 +10,12 @@ export default function InsideArticle() {
   const [data, setData] = useState([]);
   const [latestArticle, setLatestArticle] = useState([]);
   const token = useAuthStore((state) => state.token);
-
+  const URL = import.meta.env.VITE_API_URL;
 
   const getArticle = async (id) => {
     const response = await axios.get(
-      "http://localhost:8000/article/getarticle/" + id,
+      // "http://localhost:8000/article/getarticle/" + id,
+      `${URL}/article/getarticle/` + id,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -24,7 +25,8 @@ export default function InsideArticle() {
 
   const getLatestArticle = async () => {
     const response = await axios.get(
-      "http://localhost:8000/article/getlatestarticle"
+      // "http://localhost:8000/article/getlatestarticle"
+      `${URL}/article/getlatestarticle`
     );
     setLatestArticle(response.data);
     console.log(response.data);

@@ -3,6 +3,7 @@ import useAuthStore from "../../store/authStore";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
+const URL = import.meta.env.VITE_API_URL;
 
 function Article() {
   const role = useAuthStore((state) => state.role);
@@ -15,7 +16,8 @@ function Article() {
   
   const getAllArticle = async () => {
     const response = await axios.get(
-      "http://localhost:8000/article/getallarticle"
+      // "http://localhost:8000/article/getallarticle"
+      `${URL}/article/getallarticle`
     );
     setArticle(response.data.allArticle);
     setAllArticle(response.data.allArticle);

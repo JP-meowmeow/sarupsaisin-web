@@ -3,6 +3,7 @@ import useAuthStore from "../../store/authStore";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import CourseCard from "../components/CourseCard";
+const URL = import.meta.env.VITE_API_URL;
 
 function Course() {
   const role = useAuthStore((state) => state.role);
@@ -65,7 +66,8 @@ function Course() {
 
 
   const getAllCourse = async ()=>{
-    const response = await axios.get('http://localhost:8000/course/getallcourse')
+    // const response = await axios.get('http://localhost:8000/course/getallcourse')
+    const response = await axios.get(`${URL}/course/getallcourse`)
     console.log('response',response)
     setCourse(response.data.allCourse)
     setAllCourse(response.data.allCourse)

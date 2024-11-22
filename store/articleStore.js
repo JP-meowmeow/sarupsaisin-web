@@ -1,11 +1,13 @@
 import axios from "axios";
 import { create } from "zustand";
+const URL = import.meta.env.VITE_API_URL;
 
 const useArticleStore = create((set, get) => ({
   createArticle: async (body, token) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/article/uploadimage",
+        // "http://localhost:8000/article/uploadimage",
+        `${URL}/article/uploadimage`,
         body,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -19,7 +21,8 @@ const useArticleStore = create((set, get) => ({
   updateArticle: async (body, token, id) => {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/article/updatearticle/${id}`,
+        // `http://localhost:8000/article/updatearticle/${id}`,
+        `${URL}/article/updatearticle/${id}`,
         body,
         {
           headers: { Authorization: `Bearer ${token}` },

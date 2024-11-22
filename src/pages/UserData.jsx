@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuthStore from "../../store/authStore";
+const URL = import.meta.env.VITE_API_URL;
 
 export default function UserData() {
   const token = useAuthStore((state) => state.token);
@@ -16,7 +17,8 @@ export default function UserData() {
   const getUserData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/admin/checkuser",
+        // "http://localhost:8000/admin/checkuser",
+        `${URL}/admin/checkuser`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -31,7 +33,8 @@ export default function UserData() {
   const getSlipData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/admin/checkslip",
+        // "http://localhost:8000/admin/checkslip",
+        `${URL}/admin/checkslip`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -45,7 +48,8 @@ export default function UserData() {
   const updateBuyStatus = async (id) => {
     try {
       const response = await axios.patch(
-        "http://localhost:8000/admin/updatebuystatus",
+        // "http://localhost:8000/admin/updatebuystatus",
+        `${URL}/admin/updatebuystatus`,
         { id: id },
         {
           headers: { Authorization: `Bearer ${token}` },

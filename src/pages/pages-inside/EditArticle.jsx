@@ -4,6 +4,7 @@ import useAuthStore from "../../../store/authStore";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+const URL = import.meta.env.VITE_API_URL;
 
 export default function EditArticle() {
   const { id } = useParams();
@@ -29,7 +30,8 @@ export default function EditArticle() {
   async function getArticle(id) {
     try {
       const response = await axios.get(
-        `http://localhost:8000/article/getarticle/edit/${id}`,
+        // `http://localhost:8000/article/getarticle/edit/${id}`,
+        `${URL}/article/getarticle/edit/${id}`,
         {headers :{Authorization : `Bearer ${token}`}}
       );
       setArticleContent(response.data);

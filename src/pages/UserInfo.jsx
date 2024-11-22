@@ -3,6 +3,7 @@ import useAuthStore from "../../store/authStore";
 import axios from "axios";
 import ArticleCardDashboard from "../components/ArticleCardDashboard";
 import CourseCardDashboard from "../components/CourseCardDashboard";
+const URL = import.meta.env.VITE_API_URL;
 
 function UserInfo() {
   const token = useAuthStore((state) => state.token);
@@ -52,7 +53,8 @@ function UserInfo() {
 
   const handleDeleteArticle = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/article/deletearticle/${id}`, {
+      // await axios.delete(`http://localhost:8000/article/deletearticle/${id}`, {
+      await axios.delete(`${URL}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Update state to remove deleted article
@@ -66,7 +68,8 @@ function UserInfo() {
 
   const handleDeleteCourse = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/course/deletecourse/${id}`, {
+      // await axios.delete(`http://localhost:8000/course/deletecourse/${id}`, {
+      await axios.delete(`${URL}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Update state to remove deleted course
@@ -80,7 +83,8 @@ function UserInfo() {
 
   async function getUserCourse() {
     const response = await axios.get(
-      "http://localhost:8000/enrollment/getuserbuycoursedata",
+      // "http://localhost:8000/enrollment/getuserbuycoursedata",
+      `${URL}/enrollment/getuserbuycoursedata`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -90,7 +94,7 @@ function UserInfo() {
 
   async function getArticle() {
     const response = await axios.get(
-      "http://localhost:8000/article/getarticledashboard",
+      `${URL}/article/getarticledashboard`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -100,7 +104,8 @@ function UserInfo() {
 
   async function getCourse() {
     const response = await axios.get(
-      "http://localhost:8000/course/getcoursedashboard",
+      // "http://localhost:8000/course/getcoursedashboard",
+      `${URL}/course/getcoursedashboard`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
