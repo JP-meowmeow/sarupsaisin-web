@@ -66,6 +66,7 @@ function Course() {
 
   const getAllCourse = async ()=>{
     const response = await axios.get('http://localhost:8000/course/getallcourse')
+    console.log('response',response)
     setCourse(response.data.allCourse)
     setAllCourse(response.data.allCourse)
   }
@@ -73,17 +74,17 @@ function Course() {
 
 
   return (
-    <div className="mx-32 m-16 font-kanit">
+    <div className="mx-4 sm:mx-8 lg:mx-16 my-16 font-kanit">
       <div className="pt-10 flex justify-center">
-        <h2 className="text-2xl font-bold mb-4 font-kanit ">
+        <h2 className="text-xl sm:text-2xl  font-bold mb-4 font-kanit ">
           คอร์สเรียนภาษาญี่ปุ่น
           <span className="font-noto-sans-jp text-2xl"> コース</span>
         </h2>
       </div>
       <div className="divider -mt-3"></div>
       <div className="flex justify-end mb-4">
-        <label className="input input-bordered flex items-center w-[500px] ">
-          <input type="text" className="grow" placeholder="Search" />
+        <label className="input input-bordered flex items-center w-full md:w-1/2 lg:w-1/3 ">
+          <input type="text" className="flex-grow" placeholder="Search" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -98,12 +99,12 @@ function Course() {
           </svg>
         </label>
       </div>
-      <div className="flex gap-5 justify-end mb-4">
-        {role === "ADMIN" ? (
+      <div className="flex gap-3 flex-wrap justify-center md:justify-end mb-5">
+        {role === "ADMIN" && (
           <Link to="/course/create" className="btn btn-sm bg-pink-300 text-lg ">
             Create course
           </Link>
-        ) : null}
+        )}
         <button className="btn btn-sm" onClick={filterN5}>JLPT N5</button>
         <button className="btn btn-sm" onClick={filterN4}>JLPT N4</button>
         <button className="btn btn-sm" onClick={filterN3}>JLPT N3</button>
@@ -111,32 +112,34 @@ function Course() {
         <button className="btn btn-sm" onClick={filterAll}>All</button>
       </div>
 
-      {/* Pagination controls */}
-      <div className="flex justify-center mb-10 items-center">
+     
+
+      <div className="grid grid-cols-1 mb-4 sm:grid-cols-2 lg:grid-cols-4 gap-5 ">
+      {currentCourse.map((item) => (
+          <CourseCard key={item.id} item={item} />
+        ))}
+        
+      </div>
+
+       {/* Pagination controls */}
+       <div className="flex justify-center mb-20 items-center">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
-          className="btn btn-secondary w-24 px-6"
+          className="btn btn-secondary w-20 sm:w-24 px-6"
         >
           Previous
         </button>
-        <span className="mx-4">
+        <span className="mx-2 text-sm sm:text-base">
           Page {currentPage} of {totalPages}
         </span>
         <button
           onClick={nextPage}
           disabled={currentPage === totalPages}
-          className="btn btn-secondary  w-24 px-6"
+          className="btn btn-secondary  w-20 sm:w-24 px-6"
         >
           Next
         </button>
-      </div>
-
-      <div className="grid grid-cols-4 gap-y-5 ">
-      {currentCourse.map((item) => (
-          <CourseCard key={item.id} item={item} />
-        ))}
-        
       </div>
     </div>
   );

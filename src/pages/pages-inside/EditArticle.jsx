@@ -29,7 +29,8 @@ export default function EditArticle() {
   async function getArticle(id) {
     try {
       const response = await axios.get(
-        `http://localhost:8000/article/getarticle/edit/${id}`
+        `http://localhost:8000/article/getarticle/edit/${id}`,
+        {headers :{Authorization : `Bearer ${token}`}}
       );
       setArticleContent(response.data);
 

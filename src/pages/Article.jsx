@@ -8,13 +8,11 @@ function Article() {
   const role = useAuthStore((state) => state.role);
   const [article, setArticle] = useState([]);
   const [allArticle, setAllArticle] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; // 2 rows * 4 items per row
-
+  
   useEffect(() => {
     getAllArticle();
   }, []);
-
+  
   const getAllArticle = async () => {
     const response = await axios.get(
       "http://localhost:8000/article/getallarticle"
@@ -22,46 +20,48 @@ function Article() {
     setArticle(response.data.allArticle);
     setAllArticle(response.data.allArticle);
   };
-
+  
   const filterN5 = () => {
     const JLPTN5 = allArticle.filter((item) => {
       return item.category === "JLPTN5";
     });
-
+    
     setArticle(JLPTN5);
   };
-
+  
   const filterN4 = () => {
     const JLPTN4 = allArticle.filter((item) => {
       return item.category === "JLPTN4";
     });
-
+    
     setArticle(JLPTN4);
   };
-
+  
   const filterN3 = () => {
     const JLPTN3 = allArticle.filter((item) => {
       return item.category === "JLPTN3";
     });
-
+    
     setArticle(JLPTN3);
   };
-
+  
   const filterOther = () => {
     const OTHER = allArticle.filter((item) => {
       return item.category === "OTHER";
     });
-
+    
     setArticle(OTHER);
   };
-
+  
   const filterAll = () => {
     setArticle(allArticle);
   };
-
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8; // 2 rows * 4 items per row
   //reverse
   const reversedArticles = [...article].reverse();
-
+  
   // Pagination logic
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
@@ -76,17 +76,17 @@ function Article() {
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="mx-32 m-16 font-kanit">
+    <div className="mx-4 sm:mx-8 lg:mx-16 my-16 font-kanit">
       <div className="pt-10 flex justify-center">
-        <h2 className="text-2xl font-bold mb-4 font-kanit ">
+        <h2 className="text-xl sm:text-2xl  font-bold mb-4 font-kanit ">
           บทความที่น่าสนใจ
           <span className="font-noto-sans-jp text-2xl"> 記事</span>
         </h2>
       </div>
       <div className="divider -mt-3"></div>
       <div className="flex justify-end mb-4">
-        <label className="input input-bordered flex items-center w-[500px] ">
-          <input type="text" className="grow" placeholder="Search" />
+        <label className="input input-bordered flex items-center w-full md:w-1/2 lg:w-1/3 ">
+          <input type="text" className="flex-grow" placeholder="Search" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -101,7 +101,7 @@ function Article() {
           </svg>
         </label>
       </div>
-      <div className="flex gap-5 justify-end mb-4">
+      <div className="flex gap-3 flex-wrap justify-center md:justify-end mb-5">
         {role === "ADMIN" ? (
           <Link
             to="/article/create"
@@ -127,31 +127,32 @@ function Article() {
         </button>
       </div>
 
+      
+
+      <div className="grid grid-cols-1  mb-4 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {currentArticles.map((item) => (
+          <ArticleCard key={item.id} item={item} />
+        ))}
+      </div>
       {/* Pagination controls */}
-      <div className="flex justify-center mb-10 items-center">
+      <div className="flex justify-center mb-20 items-center">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
-          className="btn btn-secondary w-24 px-6"
+          className="btn btn-secondary w-20 sm:w-24 px-6"
         >
           Previous
         </button>
-        <span className="mx-4">
+        <span className="mx-2 text-sm sm:text-base">
           Page {currentPage} of {totalPages}
         </span>
         <button
           onClick={nextPage}
           disabled={currentPage === totalPages}
-          className="btn btn-secondary  w-24 px-6"
+          className="btn btn-secondary  w-20 sm:w-24 px-6"
         >
           Next
         </button>
-      </div>
-
-      <div className="grid grid-cols-4  gap-y-5">
-        {currentArticles.map((item) => (
-          <ArticleCard key={item.id} item={item} />
-        ))}
       </div>
     </div>
   );

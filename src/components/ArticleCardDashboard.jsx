@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios, { Axios } from "axios";
 import useAuthStore from "../../store/authStore";
 
-export default function ArticleCardDashboard({ item,onDelete }) {
-  const [article,setArticle] = useState([])
+export default function ArticleCardDashboard({ item, onDelete }) {
+  const [article, setArticle] = useState([]);
   const token = useAuthStore((state) => state.token);
 
   return (
-    <div>
-      <div className="card card-compact bg-base-100 w-96 shadow-xl">
-        <figure>
+    <div className="p-4 md:p-0 w-full">
+      <div className="flex flex-col h-[100%] card card-compact bg-base-100 w-full shadow-xl">
+        <figure className="overflow-hidden">
           <img
             src={item.articleThumbnailLink}
             alt="article"
-            className="w-[380px] h-[380px]"
+            className="w-full h-1080 object-fill"
           />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">{item.articleName}</h2>
-          <p>{item.articleDetails.slice(0, 25)}</p>
+        <div className="card-body flex flex-col flex-1">
+          <h2 className="line-clamp-2 card-title text-[32px] sm:text-xl mb-2">{item.articleName}</h2>
+          <p className="line-clamp-2">{item.articleDetails}</p>
           <div className="card-actions justify-between flex">
             <div className="flex gap-5">
               <button
@@ -29,7 +28,7 @@ export default function ArticleCardDashboard({ item,onDelete }) {
                 Delete
               </button>
               <Link
-                to={`/article/edit/`+item.id}
+                to={`/article/edit/` + item.id}
                 className="btn btn-outline btn-success font-noto-sans-jp px-5"
               >
                 Edit
@@ -37,7 +36,7 @@ export default function ArticleCardDashboard({ item,onDelete }) {
             </div>
             <Link
               to={"/article/" + item.id}
-              className="btn btn-primary font-noto-sans-jp"
+              className="btn btn-primary text-[16px] sm:text-base font-noto-sans-jp"
             >
               さらに詳しく
             </Link>

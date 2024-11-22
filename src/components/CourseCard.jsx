@@ -5,29 +5,33 @@ import axios from "axios";
 
 function CourseCard({item}) {
   return (
-    <div>
-      <div className="card card-compact bg-base-100 w-96 shadow-xl">
-        <figure>
+    <div className="p-4 md:p-0 w-full ">
+      <div className="flex flex-col h-[100%] card card-compact bg-base-100 shadow-xl">
+        <figure className="overflow-hidden">
           <img
-            src="./src/images/course/JLPT N5.png"
+            src={item.courseThumbnailLink}
             alt="article"
-            className="w-[380px] h-[380px]"
+            className="w-full h-full object-fill"
           />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">{item.courseName}</h2>
-          <p>
-            {item.shortDescription.slice(0,30)}
-          </p>
+          <div className="card-body flex flex-col flex-1">
+          <div className="flex-1">
+            <h2 className="card-title text-[32px]  sm:text-xl mb-2">{item.courseName}</h2>
+            <div className=" mb-4">
+              <p className="text-[18px] sm:text-base line-clamp-2 mt-2">
+                {item.shortDescription.slice(0, 30)}
+              </p>
+            </div>
+          </div>
           
-          <div className="card-actions justify-end">
+          <div className="card-actions justify-center lg:justify-end items-center">
             <div>
 
-          <h2 className="card-title justify-end pb-1">
+          <h2 className="card-title text-[24px] lg:text-2xl justify-center lg:justify-end items-center pb-1">
             {item.isFree ==="FREE" ?item.isFree :item.price + ' บาท'}  </h2>
             <Link
               to={"/course/"+item.id}
-              className="btn btn-primary font-noto-sans-jp"
+              className="btn btn-primary text-[16px] sm:text-base font-noto-sans-jp"
               >
               さらに詳しく
             </Link>

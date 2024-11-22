@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 function AboutUs() {
   return (
     <div>
-      <main className="pt-24">
+      <main className="pt-24 pb-24">
         <div className="topside">
           <img
             src="./src/images/banner.png"

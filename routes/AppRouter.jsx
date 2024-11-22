@@ -40,20 +40,22 @@ function AppRouter() {
 
         { path: "course", element: <Course /> },
         { path: "course/:id", element: <InsideCourse /> },
+
         {
           path: "course/create",
-          element: role === "ADMIN" ? <CreateCourse /> : <Home />,
+          element: role === "ADMIN" ? <CreateCourse /> : <Navigate to='/'/>,
         },
+        
         {
           path: `course/edit/:id`,
-          element: role === "ADMIN" ? <EditCourse /> : <Home />,
+          element: role === "ADMIN" ? <EditCourse /> : <Navigate to='/'/>,
         },
 
         { path: "login", element: token ? <Navigate to="/" /> : <Login /> },
         { path: "/forgot-password",
-          element:token ? <Home/> : <ForgotPassword/> },
+          element:token ? <Navigate to='/'/> : <ForgotPassword/> },
         { path: "/reset-password/:token",
-           element:token ? <Home/> : <ResetPassword/> },
+           element: <ResetPassword/> },
         {
           path: "register",
           element: token ? <Navigate to="/" /> : <Register />,
@@ -63,23 +65,24 @@ function AppRouter() {
         { path: "article/:id", element: <InsideArticle /> },
         {
           path: "article/create",
-          element: role === "ADMIN" ? <CreateArticle /> : <Home />,
+          element: role === "ADMIN" ? <CreateArticle /> : <Navigate to='/'/>,
         },
         {
           path: `article/edit/:id`,
-          element: role === "ADMIN" ? <EditArticle /> : <Home />,
+          element: role === "ADMIN" ? <EditArticle /> : <Navigate to='/'/>,
         },
 
         //dash board
-        { path: "userinfo", element: token ? <UserInfo /> : <Home /> }, //dashboard-user
+        { path: "userinfo", element: token ? <UserInfo /> : <Navigate to='/'/> }, //dashboard-user
         {
           path: "admin/userdata",
-          element: role === "ADMIN" ? <UserData /> : <Home />,
+          element: role === "ADMIN" ? <UserData /> : <Navigate to='/'/>,
         }, //dashboard-admin for check slip
 
         //payment page
-        { path: "payment/:id", element: token ? <Payment /> : <Home /> },
-
+        { path: "payment/:id", element: token ? <Payment /> : <Navigate to='/'/> },
+        { path: "payment", element: <Navigate to='/'/> },
+        
         { path: "*", element: <PageNotFound /> },
       ],
     },

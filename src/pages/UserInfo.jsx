@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useAuthStore from "../../store/authStore";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import ArticleCardDashboard from "../components/ArticleCardDashboard";
 import CourseCardDashboard from "../components/CourseCardDashboard";
 
@@ -111,7 +111,7 @@ function UserInfo() {
   return (
     <>
       {role === "ADMIN" ? (
-        <div className="pt-16 mx-24">
+        <div className="pt-24 pb-24 mx-24 font-kanit">
           <div>
             <h1>ADMIN DASH board</h1>
             <img
@@ -123,7 +123,7 @@ function UserInfo() {
               คอร์สเรียน{" "}
               <span className="font-noto-sans-jp text-2xl">コース</span>
             </h1>
-            <div className="grid grid-cols-4 gap-y-5 mb-5">
+            <div className="grid grid-cols-4 gap-5 mb-5 overflow-x-hidden">
               {currentCourse.map((item) => (
                 <CourseCardDashboard
                   key={item.id}
@@ -164,7 +164,7 @@ function UserInfo() {
             <h1 className="text-2xl font-bold font-kanit mb-4">
               บทความ <span className="font-noto-sans-jp text-2xl">記事</span>
             </h1>
-            <div className="grid grid-cols-4 gap-y-5 mb-5">
+            <div className="grid grid-cols-4 gap-5 mb-5 overflow-x-hidden">
               {currentArticle.map((item) => (
                 <ArticleCardDashboard
                   key={item.id}

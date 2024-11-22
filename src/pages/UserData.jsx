@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import useAuthStore from "../../store/authStore";
 
 export default function UserData() {
+  const token = useAuthStore((state) => state.token);
   const [slips, setSlips] = useState([]);
   const [userData, setUserData] = useState([]);
   const [confirmBuy, setConfirmBuy] = useState(false);
@@ -13,7 +15,12 @@ export default function UserData() {
 
   const getUserData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/admin/checkuser");
+      const response = await axios.get(
+        "http://localhost:8000/admin/checkuser",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setUserData(response.data);
       console.log(response.data);
     } catch (err) {
@@ -23,7 +30,12 @@ export default function UserData() {
 
   const getSlipData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/admin/checkslip");
+      const response = await axios.get(
+        "http://localhost:8000/admin/checkslip",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setSlips(response.data);
     } catch (err) {
       console.log(err);
@@ -33,9 +45,13 @@ export default function UserData() {
   const updateBuyStatus = async (id) => {
     try {
       const response = await axios.patch(
-        "http://localhost:8000/admin/updatebuystatus"
-      ,{id:id});
-      getSlipData()
+        "http://localhost:8000/admin/updatebuystatus",
+        { id: id },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      getSlipData();
     } catch (err) {
       console.log(err);
     }
@@ -81,7 +97,12 @@ export default function UserData() {
                   <td> {new Date(item.enrolledAt).toLocaleString()}</td>
                   <td>{item.status}</td>
                   <td>
-                    <button className="btn btn-sm" onClick={()=>hdlClick(item)}>Confirm Slip</button>
+                    <button
+                      className="btn btn-sm"
+                      onClick={() => hdlClick(item)}
+                    >
+                      Confirm Slip
+                    </button>
                   </td>
                 </tr>
               ))}

@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuthStore from "../../../store/authStore";
 import useCourseStore from "../../../store/courseStore";
+import Spinner from "../../components/Spinner";
 
 function CreateCourse() {
   const token = useAuthStore((state) => state.token);
   const createCourse = useCourseStore((state) => state.createCourse);
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [form, setForm] = useState({
     courseName: "",
@@ -16,6 +17,7 @@ function CreateCourse() {
     longDescription: "",
     category: "",
     price: "",
+    isFree: "",
   });
 
   const [units, setUnits] = useState([
@@ -52,11 +54,17 @@ function CreateCourse() {
 
   const removeUnit = (index) => {
     const newUnits = units.filter((_, i) => i !== index);
-    setUnits(newUnits);
+    const updatedUnits = newUnits.map((unit, i) => ({
+      ...unit,
+      unitNumber: i + 1, 
+    }));
+
+    setUnits(updatedUnits);
   };
 
   const hdlCreateCourse = async (e) => {
     try {
+      setIsLoading(true);
       const body = new FormData();
       body.append("courseName", form.courseName);
       body.append("shortDescription", form.shortDescription);
@@ -64,15 +72,13 @@ function CreateCourse() {
       body.append("price", form.price);
       body.append("category", form.category);
       body.append("units", JSON.stringify(units));
+      body.append("isFree", form.isFree);
       if (file) {
         body.append("link", file);
       }
 
-      for (let [key, value] of body.entries()) {
-        console.log(`${key}: ${value}`);
-      } // to check what are inside the body
-
       await createCourse(body, token);
+      setIsLoading(false);
       toast.success("Course created successfully");
       navigate("/course");
     } catch (err) {
@@ -132,16 +138,29 @@ function CreateCourse() {
               <option value="JLPTN3">JLPT N3</option>
               <option value="OTHER">OTHER</option>
             </select>
+            <select
+              name="isFree"
+              className="select select-bordered w-[150px] max-w-xs"
+              onChange={hdlChange}
+            >
+              <option disabled selected>
+                Free Course?
+              </option>
+              <option value="FREE">FREE</option>
+              <option value="NOTFREE">NOTFREE</option>
+            </select>
           </div>
         </div>
       </header>
 
       <input type="file" onChange={hdlFileChange} />
-      {form.courseName &&
-      form.price &&
-      form.shortDescription &&
-      form.longDescription &&
-      file ? (
+      {isLoading ? (
+        <Spinner />
+      ) : form.courseName &&
+        form.price &&
+        form.shortDescription &&
+        form.longDescription &&
+        file ? (
         <button className="btn" onClick={hdlCreateCourse}>
           Submit Course
         </button>

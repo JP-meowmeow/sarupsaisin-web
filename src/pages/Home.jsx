@@ -1,137 +1,155 @@
 import React from "react";
 import Tiktok from "../components/Tiktok";
-import {Link} from 'react-router-dom'
-import useAuthStore from '../../store/authStore'
+import { Link } from "react-router-dom";
+import useAuthStore from "../../store/authStore";
+
 function Home() {
-  const token = useAuthStore((state)=>state.token)
+  const token = useAuthStore((state) => state.token);
   return (
-    <div>
-      <div className="flex flex-col min-h-screen bg-[#FCFBF8]">
-        <div className="p-16">
-          <div className="grid grid-cols-1">
-            <main className="col-start-1 row-start-1 flex-grow container mx-auto px-4 py-8 pt-16 relative ">
-            <div className="flex flex-col md:flex-row">
-              <div className="w-full md:w-1/2 aspect-video flex items-center justify-center text-white text-2xl mb-4 md:mb-0">
+    // Added overflow-x-hidden to prevent horizontal scroll
+    <div className="flex flex-col min-h-screen bg-[#FCFBF8] overflow-x-hidden">
+      {/* Adjusted padding for better mobile response */}
+      <div className="pt-16 px-2 sm:px-4 lg:px-8">
+        <div className="grid grid-cols-1 ">
+          <main className="col-start-1 row-start-1 w-full max-w-7xl mx-auto py-4 sm:py-8">
+            {/* Hero Section */}
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Video Section */}
+              <div className="w-full md:w-1/2 aspect-video">
                 <iframe
-                  width="1400"
-                  height="500"
+                  className="w-full h-full"
                   src="https://www.youtube.com/embed/XnPOEGJcy3w?si=mV99p1tkPjtMWqTY"
                   title="YouTube video player"
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
                 ></iframe>
               </div>
-              <div className="w-full md:w-1/2 md:pl-8 flex flex-col justify-center">
-                <h1 className="text-3xl font-bold mb-4 font-kanit ">
+
+              {/* Text Section */}
+              <div
+                className="w-full md:w-1/2 md:pl-4 lg:pl-8 flex flex-col mb-4 justify-center 
+              bg-[url('https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566776/logo_pink_z8sarx.png')]
+               bg-contain bg-right bg-no-repeat "
+              >
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 font-kanit">
                   เรียนภาษาญี่ปุ่นกับ sarupsaisin
                 </h1>
-                <p className="mb-4 font-kanit">
+                <p className="mb-2 sm:mb-4 font-kanit text-sm sm:text-base">
                   สื่อการเรียนรู้ภาษาญี่ปุ่นของคนรุ่นใหม่
                 </p>
-                <div className="flex space-x-4">
-                  {token
-                  ?<div></div>
-                  :<Link to="/login" className="btn btn-sm bg-[#F3747F] text-white px-4 py-2 rounded font-kanit ">
-                  เข้าสู่ระบบ
-                </Link>
-                  }
-                  
-                  <Link to='/course/3' className="btn btn-sm bg-[#F3747F] text-white px-4 py-2  rounded font-kanit">
+                <div className="flex space-x-2 sm:space-x-4">
+                  {token ? (
+                    <div></div>
+                  ) : (
+                    <Link
+                      to="/login"
+                      className="btn btn-sm bg-[#F3747F] text-white px-2 sm:px-4 py-1 sm:py-2 sm:pb-8 rounded font-kanit text-sm sm:text-base"
+                    >
+                      เข้าสู่ระบบ
+                    </Link>
+                  )}
+                  <Link
+                    to="/course/3"
+                    className="btn btn-sm bg-[#F3747F] text-white px-2 sm:px-4 py-1 sm:py-2 sm:pb-8 rounded font-kanit text-sm sm:text-base"
+                  >
                     ทดลองเรียน
                   </Link>
                 </div>
               </div>
             </div>
-            </main>
-            <div className="col-start-1 row-start-1 justify-self-end mt-12 mr-24">
-              <img
-                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566776/logo_pink_z8sarx.png"
-                alt=""
-                className="w-[600px]"
-              />
-            </div>
-          </div>
-          <main className="flex-grow container mx-auto px-4 -my-10">
-           
-
-            {/* Course Section */}
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4 font-kanit ">
-                คอร์สเรียนภาษาญี่ปุ่น{" "}
-                <span className="font-noto-sans-jp text-2xl">コース</span>
-              </h2>
-              <div className="divider"></div>
-              <div className="flex justify-between px-5">
-                <img
-                  src="./src/images/course/JLPT N3.png"
-                  alt=""
-                  className="aspect-square w-[400px] rounded-3xl shadow-2xl"
-                />
-                <img
-                  src="./src/images/course/JLPT N4.png"
-                  alt=""
-                  className="aspect-square w-[400px] rounded-3xl shadow-2xl"
-                />
-                <img
-                  src="./src/images/course/JLPT N5.png"
-                  alt=""
-                  className="aspect-square w-[400px] rounded-3xl shadow-2xl"
-                />
-              </div>
-              <div className="flex  justify-center">
-                <Link to="/course" className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
-                  {" "}
-                  all course คอร์สเรียนทั้งหมด{" "}
-                </Link>
-              </div>
-            </div>
-
-            {/* Popular Article Section */}
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4 font-kanit ">
-                บทความที่น่าสนใจ{" "}
-                <span className="font-noto-sans-jp text-2xl">記事</span>
-              </h2>
-              <div className="divider"></div>
-              <div className="flex justify-between px-5">
-                <img
-                  src="./src/images/articles/Article 2.png"
-                  alt=""
-                  className="aspect-square w-[400px] rounded-3xl shadow-2xl"
-                />
-                <img
-                  src="./src/images/articles/Article 1.png"
-                  alt=""
-                  className="aspect-square w-[400px] rounded-3xl shadow-2xl"
-                />
-                <img
-                  src="./src/images/articles/Article 3.png"
-                  alt=""
-                  className="aspect-square w-[400px] rounded-3xl shadow-2xl"
-                />
-              </div>
-              <div className="flex  justify-center">
-                <Link to='/article' className="btn w-3/4  bg-[#F3747F] font-kanit text-white mt-10 tracking-widest text-lg">
-                  {" "}
-                  all article บทความที่น่าสนใจทั้งหมด{" "}
-                </Link>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4 font-kanit ">
-                Social Media{" "}
-                <span className="font-noto-sans-jp text-2xl">ソーシャル</span>
-              </h2>
-              <div className="divider"></div>
-              <Tiktok />
-            </div>
           </main>
 
-          {/* Footer */}
-          {/* <Footer /> */}
+          {/* Logo Position */}
+          {/* <div className="col-start-1 row-start-1 justify-self-end mt-6 sm:mt-12 mr-2 sm:mr-8 lg:mr-16">
+            <img
+              src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566776/logo_pink_z8sarx.png"
+              alt=""
+              className="w-[120px] sm:w-[200px] lg:w-[400px]"
+            />
+          </div> */}
+        </div>
+
+        {/* Main Content Area */}
+        <div className="w-full max-w-7xl mx-auto -mt-5 ">
+          {/* Course Section */}
+          <div className="mb-4 sm:mb-8 text-center lg:text-left">
+            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit">
+              คอร์สเรียนภาษาญี่ปุ่น{" "}
+              <span className="font-noto-sans-jp text-xl sm:text-2xl">
+                コース
+              </span>
+            </h2>
+            <div className="divider -mt-2"></div>
+
+            {/* Course Images */}
+            <div className="grid grid-cols-3 gap-2 lg:gap-4">
+              {["N3", "N4", "N5"].map((level, index) => (
+                <img
+                  key={index}
+                  src={`./src/images/course/JLPT ${level}.png`}
+                  alt=""
+                  className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+                />
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-4 sm:mt-8">
+              <Link
+                to="/course"
+                className="btn btn-sm sm:btn-md text-[12px]  w-full  sm:w-3/4 lg:w-1/2 bg-[#F3747F] font-kanit text-white tracking-widest sm:text-lg"
+              >
+                all course คอร์สเรียนทั้งหมด
+              </Link>
+            </div>
+          </div>
+
+          {/* Articles Section */}
+          <div className="mb-4 sm:mb-8 ">
+            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left">
+              บทความที่น่าสนใจ{" "}
+              <span className="font-noto-sans-jp text-xl sm:text-2xl">
+                記事
+              </span>
+            </h2>
+            <div className="divider -mt-2"></div>
+
+            {/* Article Images */}
+            <div className="grid grid-cols-3 gap-2 lg:gap-4">
+              {[2, 1, 3].map((num, index) => (
+                <img
+                  key={index}
+                  src={`./src/images/articles/Article ${num}.png`}
+                  alt=""
+                  className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
+                />
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-4 sm:mt-8">
+              <Link
+                to="/article"
+                className="btn btn-sm sm:btn-md text-[12px] w-full sm:w-3/4 lg:w-1/2 bg-[#F3747F] font-kanit text-white tracking-widest  sm:text-lg"
+              >
+                all article บทความที่น่าสนใจทั้งหมด
+              </Link>
+            </div>
+          </div>
+
+          {/* Social Media Section */}
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left">
+              Social Media{" "}
+              <span className="font-noto-sans-jp text-xl sm:text-2xl">
+                ソーシャル
+              </span>
+            </h2>
+            <div className="divider -mt-2"></div>
+            <div className="mb-16">
+            <Tiktok />
+            </div>
+          </div>
         </div>
       </div>
     </div>

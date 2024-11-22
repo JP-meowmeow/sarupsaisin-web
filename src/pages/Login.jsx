@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Facebook } from "lucide-react";
 import { toast } from "react-toastify";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
 
 const Login = () => {
@@ -21,18 +21,14 @@ const Login = () => {
   const hdlSubmit = async (e) => {
     try {
       e.preventDefault();
-
       const response = await login(form);
-
       if (response.status === 200) {
         setForm({
           email: "",
           password: "",
         });
         console.log(response.data);
-
         navigate("/userinfo");
-
         toast.success("Login successful!");
       }
     } catch (err) {
@@ -43,15 +39,26 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="pt-16 mt-24 mb-24 border shadow-lg w-1/2 m-auto rounded-[64px] p-20 ">
+    <div className="mt-24 mb-24 md:mt-24 lg:mt-24 px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 md:mb-16 border shadow-lg w-full md:w-[90%] lg:w-[80%] xl:w-[70%] m-auto rounded-3xl md:rounded-[64px] px-4 sm:px-8 md:px-12 lg:px-16">
         <div>
-          <div className="flex justify-center items-center">
-            <div className="w-1/2 p-8 bg-white">
-              <h2 className="text-2xl font-bold mb-4 font-kanit ">
+          <div className="flex flex-col lg:flex-row justify-center items-center">
+            {/* responsive logo */}
+            <div className="w-full lg:w-1/2 mt-8 lg:mt-0 lg:hidden">
+              <div className="h-full flex items-center justify-center">
+                <img
+                  src="/src/images/logo black.png"
+                  alt="Login background"
+                  className="object-contain max-w-[80%] lg:max-w-full"
+                />
+              </div>
+            </div>
+            {/* Form Section */}
+            <div className="w-full lg:w-1/2 p-4 md:p-8 bg-white">
+              <h2 className="text-xl md:text-2xl font-bold mb-4 font-kanit  text-center lg:text-left">
                 Welcome to <span className="text-[#F3747F]">สรุปสายศิลป์</span>{" "}
                 <br />
-                <span className="font-noto-sans-jp text-2xl text-[#F3747F]">
+                <span className="font-noto-sans-jp text-2xl md:text-2xl text-[#F3747F]">
                   サルプサイシンへようこそ！
                 </span>
               </h2>
@@ -78,26 +85,22 @@ const Login = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div></div>
-                  {/* <label className="flex items-center">
-                <input type="checkbox" className="mr-2" />
-                <span className="text-sm text-gray-600">Remember me</span>
-                </label> */}
-                  <button className="btn btn-l bg-[#F3747F] text-white px-4  rounded-md w-full ">
-                    LOGIN
+                  <button className="btn btn-sm md:btn-l bg-[#F3747F] text-white px-4 rounded-md w-full">
+                 Login | <span className="font-noto-sans-jp">ログイン</span>
                   </button>
                 </div>
-                <div className="text-sm text-[#F3747F]">
-                  <Link to="/register" >Register 登録</Link>
+                <div className="text-sm text-[#F3747F] flex justify-center items-center gap-2 sm:gap-0">
+                  <Link to="/register">Register 登録</Link>
                   <span className="mx-2 text-gray-300">|</span>
-                  <Link to="/forgot-password">Forgot password? 忘れちゃった？ </Link>
+                  <Link to="/forgot-password">Forgot password? 忘れちゃった？</Link>
                 </div>
               </form>
-              <div className="mt-6 space-y-2">
-                <button className="w-full p-2 bg-blue-600 text-white rounded-md flex items-center justify-center">
+              <div className="mt-3 space-y-2">
+                <button className="w-full p-2 bg-blue-600 text-white rounded-md flex items-center justify-center text-sm sm:text-base">
                   <Facebook className="mr-2" size={20} />
                   LOGIN WITH FACEBOOK
                 </button>
-                <button className="w-full p-2 bg-red-500 text-white rounded-md flex items-center justify-center">
+                <button className="w-full p-2 bg-red-500 text-white rounded-md flex items-center justify-center text-sm sm:text-base">
                   <svg className="mr-2 w-5 h-5" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -108,25 +111,29 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            <div className="w-1/2">
-              {/* This is where you'd put the image */}
+
+            {/* Image Section */}
+            <div className="w-full lg:w-1/2 mt-8 lg:mt-0 hidden lg:block">
               <div className="h-full flex items-center justify-center">
                 <img
                   src="/src/images/logo black.png"
                   alt="Login background"
-                  className="object-cover"
+                  className="object-contain max-w-[80%] lg:max-w-full"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <p className="text-4xl font-bold mb-10 font-noto-sans-jp text-center">
-        “「唯一実現不可能な旅は、いつまでも始まらないものだ」”
-        <br />
-        <br />
-        <span className="text-2xl">アンソニー・ロビンズ</span>
-      </p>
+
+      {/* Quote Section */}
+      <div className="px-4 sm:px-0">
+        <p className="text-2xl lg:text-4xl font-bold mb-6 md:mb-10 font-noto-sans-jp text-center">
+          "「唯一実現不可能な旅は、いつまでも始まらないものだ」"
+          <br />
+          <span className="text-xl ">アンソニー・ロビンズ</span>
+        </p>
+      </div>
     </div>
   );
 };

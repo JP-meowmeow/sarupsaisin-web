@@ -32,10 +32,6 @@ const CourseDetail = () => {
           `http://localhost:8000/course/getcourse/${id}`
         );
         setCourse(response.data);
-        if (response.data.units?.length > 0) {
-          setActiveUnit(response.data.units[0]);
-        }
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching course:", error);
       }
@@ -49,23 +45,23 @@ const CourseDetail = () => {
   }
 
   return (
-    <div className="m-16 font-kanit">
-      <h1 className="text-3xl mt-24 font-bold mb-4">
+    <div className="m-4 mb-16 lg:m-16  font-kanit">
+      <h1 className="text-center lg:text-left text-3xl mt-24 font-bold mb-4">
         คอร์ส {course.courseName}
       </h1>
       <div className="divider"></div>
-      <div className="grid grid-cols-3 gap-8">
-        <div className="col-span-2">
+      <div className="grid lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
           {activeUnit ? (
             activeUnit && (
-              <div className="mb-8">
+              <div className="mb-4">
                 <h2 className="text-2xl font-semibold mb-2">
                   บทเรียน {activeUnit.title}
                 </h2>
                 <YouTubeEmbed url={activeUnit.youtubeLink} />
 
-                <p className="mt-4 ">
-                  รายละเอียดบทเรียน : <br />
+                <p className="mt-4  ">
+                  <span className="text-xl font-bold">รายละเอียดบทเรียน : </span><br />
                   {activeUnit.description}
                 </p>
                 <div className="divider"></div>
@@ -75,11 +71,12 @@ const CourseDetail = () => {
             <YouTubeEmbed url="https://www.youtube.com/embed/XnPOEGJcy3w?si=Q64W_Ao723M0-GvC" />
           )}
 
-          <h2 className="text-xl font-semibold mb-2">Course Description</h2>
+          <h2 className="text-xl font-semibold mt-2 mb-2">Course Description</h2>
           <p className="mb-4">{course.shortDescription}</p>
           <h3 className="text-lg font-semibold mb-2">Detailed Description</h3>
           <p>{course.longDescription}</p>
         </div>
+        <div className="">
         <div className="flex flex-col gap-5">
           <div className="bg-gray-100 p-4 rounded-lg">
             <h3 className="text-xl font-semibold mb-2">
@@ -163,6 +160,7 @@ const CourseDetail = () => {
               )}
             </div>
           )}
+        </div>
         </div>
       </div>
     </div>

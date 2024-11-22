@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import useAuthStore from "../../../store/authStore";
+// import FavoriteButton from "../../components/FavoriteButton";
 
 export default function InsideArticle() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [latestArticle, setLatestArticle] = useState([]);
-  const token = useAuthStore(state=>state.token)
+  const token = useAuthStore((state) => state.token);
+
 
   const getArticle = async (id) => {
     const response = await axios.get(
@@ -60,7 +62,6 @@ export default function InsideArticle() {
           />
           <h1 className="mt-8 mb-8 mx-10">{data.articleDetails}</h1>
         </div>
-
         <div className="w-[320px]">
           <div className="w-full  ">
             <div className="bg-gray-100 p-3 pb-1 rounded-lg mb-6">
