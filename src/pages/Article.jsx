@@ -15,6 +15,7 @@ function Article() {
   }, []);
   
   const getAllArticle = async () => {
+    console.log("API Base URL:", URL);
     const response = await axios.get(
       // "http://localhost:8000/article/getallarticle"
       `${URL}/article/getallarticle`
