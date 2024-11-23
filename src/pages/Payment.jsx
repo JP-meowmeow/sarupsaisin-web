@@ -71,7 +71,7 @@ export default function Payment() {
       <div
         className="
       
-      pt-16 mt-24 mb-24 border shadow-lg w-full m-auto lg:w-1/2  rounded-[64px] max-md:justify-center font-kanit p-0 lg:p-20 "
+      pt-16 mt-24 mb-24 border shadow-lg w-full m-auto lg:w-1/2  rounded-[64px] bg-[#FCFBF8] max-md:justify-center font-kanit p-0 lg:p-20 "
       >
         {/* <div className="max-md:hidden">
             <img

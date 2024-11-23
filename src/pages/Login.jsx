@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mt-24 mb-24 md:mt-24 lg:mt-24 px-4 sm:px-6 lg:px-8">
+    <div className="mt-24 mb-24 md:mt-24 lg:mt-24 px-4 sm:px-6 lg:px-8 min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="mb-8 md:mb-16 border shadow-lg w-full md:w-[90%] lg:w-[80%] xl:w-[70%] m-auto rounded-3xl md:rounded-[64px] px-4 sm:px-8 md:px-12 lg:px-16">
         <div>
           <div className="flex flex-col lg:flex-row justify-center items-center">

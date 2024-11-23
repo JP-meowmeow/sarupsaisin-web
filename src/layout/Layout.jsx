@@ -6,7 +6,7 @@ import MobileNavbar from "../components/MobileNavbar";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="">
       <div className="fixed top-0 left-0 right-0 z-50 hidden lg:block">
         <Navbar />
       </div>

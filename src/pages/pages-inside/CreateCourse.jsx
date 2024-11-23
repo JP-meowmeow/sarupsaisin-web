@@ -88,7 +88,7 @@ function CreateCourse() {
     }
   };
   return (
-    <div className="m-16 pt-10 font-kanit">
+    <div className="m-16 pt-10 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <h1 className="text-2xl font-bold font-kanit mb-4">
         ข้อมูลคอร์ส{" "}
         <span className="font-noto-sans-jp text-2xl">コース内容</span>

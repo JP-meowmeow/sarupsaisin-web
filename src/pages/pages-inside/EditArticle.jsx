@@ -80,7 +80,7 @@ export default function EditArticle() {
   };
 
   return (
-    <div className="m-16 pt-10 font-kanit">
+    <div className="m-16 pt-10 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <header className="flex items-center gap-5 mb-5">
         <span>Header : </span>
         <input

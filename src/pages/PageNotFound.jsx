@@ -3,7 +3,7 @@ import React from "react";
 function PageNotFound() {
   return (
     <div>
-        <div className="pt-16 mt-24 mb-24 border shadow-lg w-1/2 m-auto rounded-[64px] p-20 ">
+        <div className="pt-16 mt-24 mb-24 border shadow-lg w-1/2 m-auto rounded-[64px] p-20 min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="flex justify-center items-center">
         <div className="w-1/2 p-8 bg-white">
         <h2 className="text-2xl font-bold mb-4 font-kanit ">

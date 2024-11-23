@@ -48,7 +48,7 @@ const CourseDetail = () => {
   }
 
   return (
-    <div className="m-4 mb-16 lg:m-16  font-kanit">
+    <div className="m-4 mb-16 lg:m-16  font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <h1 className="text-center lg:text-left text-3xl mt-24 font-bold mb-4">
         คอร์ส {course.courseName}
       </h1>

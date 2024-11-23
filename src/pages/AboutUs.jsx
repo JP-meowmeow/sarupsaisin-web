@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 function AboutUs() {
   return (
-    <div>
+    <div className="min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <main className="pt-24 pb-24">
         <div className="topside">
           <img

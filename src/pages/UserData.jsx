@@ -66,7 +66,7 @@ export default function UserData() {
   };
 
   return (
-    <div className="m-16 font-kanit">
+    <div className="m-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="mt-32">
         <h1>ผู้เรียนที่สมัครเข้ามาใหม่</h1>
         <div className="overflow-x-auto">

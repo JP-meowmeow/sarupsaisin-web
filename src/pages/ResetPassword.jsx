@@ -33,7 +33,7 @@ function ResetPassword() {
 
   return (
     <div className=''>
-      <div className="pt-16 mt-24 mb-24 border shadow-lg w-1/2 m-auto rounded-[64px] p-20">
+      <div className="pt-16 mt-24 mb-24 border shadow-lg w-1/2 m-auto rounded-[64px] p-20 min-h-screen bg-[#FCFBF8] overflow-x-hidden">
 
       
      

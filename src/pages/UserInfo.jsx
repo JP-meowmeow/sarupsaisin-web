@@ -116,7 +116,7 @@ function UserInfo() {
   return (
     <>
       {role === "ADMIN" ? (
-        <div className="pt-24 pb-24 mx-24 font-kanit">
+        <div className="pt-24 pb-24 mx-24 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
           <div>
             <h1>ADMIN DASH board</h1>
             <img
@@ -203,7 +203,7 @@ function UserInfo() {
           </div>
         </div>
       ) : (
-        <div className="pt-16 mx-24">
+        <div className="pt-16 mx-24 min-h-screen bg-[#FCFBF8] overflow-x-hidden">
           <div>
             <p>USER DASH board</p>
             <img

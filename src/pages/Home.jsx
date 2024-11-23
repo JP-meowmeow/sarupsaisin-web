@@ -84,7 +84,7 @@ function Home() {
             <div className="divider -mt-2"></div>
 
             {/* Course Images */}
-            <div className="grid grid-cols-3 gap-2 lg:gap-4">
+            <div className="grid grid-cols-3 gap-2 place-items-center lg:gap-4">
               {/* {["N3", "N4", "N5"].map((level, index) => (
                 <img
                   key={index}
@@ -119,7 +119,7 @@ function Home() {
 
           {/* Articles Section */}
           <div className="mb-4 sm:mb-8 ">
-            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left">
+            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left ">
               บทความที่น่าสนใจ{" "}
               <span className="font-noto-sans-jp text-xl sm:text-2xl">
                 記事
@@ -128,7 +128,7 @@ function Home() {
             <div className="divider -mt-2"></div>
 
             {/* Article Images */}
-            <div className="grid grid-cols-3 gap-2 lg:gap-4">
+            <div className="grid grid-cols-3 gap-2 lg:gap-4 place-items-center">
               {/* {[2, 1, 3].map((num, index) => (
                 <img
                   key={index}
