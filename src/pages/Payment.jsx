@@ -64,7 +64,7 @@ export default function Payment() {
 
   return (
     
-    <div className=" 
+    <div className=" bg-[#FCFBF8]
     bg-[url('https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566776/logo_pink_z8sarx.png')]
                bg-contain bg-right bg-no-repeat 
     max-md:m-0 max-md:w-full max-md:flex max-md:justify-center p-3 ">

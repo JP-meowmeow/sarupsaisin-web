@@ -49,7 +49,7 @@ function Register() {
             <div className="w-full lg:w-1/2 mt-8 lg:mt-0 lg:hidden">
               <div className="h-full flex items-center justify-center">
                 <img
-                  src="/src/images/logo black.png"
+                  src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729569335/1729569332469.png"
                   alt="Login background"
                   className="object-contain max-w-[80%] lg:max-w-full"
                 />
@@ -122,7 +122,7 @@ function Register() {
             <div className="w-full lg:w-1/2 mt-8 lg:mt-0 hidden lg:block">
               <div className="h-full flex items-center justify-center">
                 <img
-                  src="/src/images/logo black.png"
+                  src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729569335/1729569332469.png"
                   alt="Register background"
                   className="object-contain max-w-[80%] lg:max-w-full"
                 />
