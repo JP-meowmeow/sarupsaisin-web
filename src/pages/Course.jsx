@@ -76,7 +76,7 @@ function Course() {
 
 
   return (
-    <div className="mx-4 sm:mx-8 lg:mx-16 my-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
+    <div className="px-4 sm:px-8 lg:px-16 py-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="pt-10 flex justify-center">
         <h2 className="text-xl sm:text-2xl  font-bold mb-4 font-kanit ">
           คอร์สเรียนภาษาญี่ปุ่น

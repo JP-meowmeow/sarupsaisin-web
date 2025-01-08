@@ -1,5 +1,4 @@
 import React from "react";
-import { Eye, Facebook, Twitter } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -11,7 +10,7 @@ function Register() {
     email: "",
     password: "",
     confirmPassword: "",
-    dateOfBirth: "",
+    // dateOfBirth: "",
   });
 
   const hdlChange = (e) => {
@@ -30,7 +29,8 @@ function Register() {
 
       if (response.status === 200) {
         toast.success("Registration successful!");
-        navigate("/login");
+        console.log(response)
+        // navigate("/login");
       }
     } catch (err) {
       const errMessage = err.response?.data?.error || err.message;
@@ -67,7 +67,7 @@ function Register() {
               </h2>
 
               <form className="space-y-4" onSubmit={hdlSubmit}>
-                <div className="relative">
+                {/* <div className="">
                   <label>Date of Birth :</label>
                   <input
                     type="date"
@@ -77,8 +77,8 @@ function Register() {
                     onChange={hdlChange}
                     className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
                   />
-                </div>
-                <div className="relative">
+                </div> */}
+                <div className="">
                   <label>E-mail :</label>
                   <input
                     type="text"
@@ -89,7 +89,7 @@ function Register() {
                     className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
                   />
                 </div>
-                <div className="relative">
+                <div className="">
                   <label>Password :</label>
                   <input
                     type="password"
@@ -100,7 +100,7 @@ function Register() {
                     className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
                   />
                 </div>
-                <div className="relative">
+                <div className="">
                   <input
                     type="password"
                     name="confirmPassword"

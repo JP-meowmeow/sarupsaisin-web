@@ -28,7 +28,7 @@ import ForgotPassword from "../src/pages/ForgetPassword";
 import ResetPassword from "../src/pages/ResetPassword";
 
 function AppRouter() {
-  const { user, token, logout, role } = useAuthStore();
+  const { token,role } = useAuthStore();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -36,6 +36,7 @@ function AppRouter() {
       children: [
         { index: true, element: <Home /> },
         { path: "about", element: <AboutUs /> },
+        // page for selling the book
         { path: "test", element: <Test /> },
 
         { path: "course", element: <Course /> },

@@ -54,7 +54,7 @@ function UserInfo() {
   const handleDeleteArticle = async (id) => {
     try {
       // await axios.delete(`http://localhost:8000/article/deletearticle/${id}`, {
-      await axios.delete(`${URL}/${id}`, {
+      await axios.delete(`${URL}/article/deletearticle/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Update state to remove deleted article
@@ -69,7 +69,7 @@ function UserInfo() {
   const handleDeleteCourse = async (id) => {
     try {
       // await axios.delete(`http://localhost:8000/course/deletecourse/${id}`, {
-      await axios.delete(`${URL}/${id}`, {
+      await axios.delete(`${URL}/course/deletecourse/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Update state to remove deleted course
@@ -115,8 +115,10 @@ function UserInfo() {
 
   return (
     <>
+    {/* ADMIN */}
       {role === "ADMIN" ? (
-        <div className="pt-24 pb-24 mx-24 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
+        // pt-24 pb-24 mx-24
+        <div className="px-4 sm:px-8 lg:px-16 py-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
           <div>
             <h1>ADMIN DASH board</h1>
             <img
@@ -203,7 +205,8 @@ function UserInfo() {
           </div>
         </div>
       ) : (
-        <div className="pt-16 mx-24 min-h-screen bg-[#FCFBF8] overflow-x-hidden">
+        // User
+        <div className="px-4 sm:px-8 lg:px-16 py-16  min-h-screen bg-[#FCFBF8] overflow-x-hidden">
           <div>
             <p>USER DASH board</p>
             <img
@@ -215,7 +218,7 @@ function UserInfo() {
               คอร์สเรียนของฉัน{" "}
               <span className="font-noto-sans-jp text-2xl">買ったコース</span>
             </h1>
-            <div className="flex gap-5 mb-5">
+            <div className="grid grid-cols-4 gap-5 mb-5 overflow-x-hidden">
               {userCourseData.map((item) => (
                 <CourseCardDashboard key={item.id} item={item.course} />
               ))}
