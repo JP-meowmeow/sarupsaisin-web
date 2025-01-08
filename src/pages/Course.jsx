@@ -20,8 +20,10 @@ function Course() {
    const currentCourse = reversedCourse.slice(indexOfFirstCourse, indexOfLastCourse);
    const totalPages = Math.ceil(course.length / itemsPerPage);
 
-   const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  //  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  //  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const nextPage = () => setCurrentPage((prev) => prev + 1);
+   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   useEffect(()=>{
     getAllCourse();
