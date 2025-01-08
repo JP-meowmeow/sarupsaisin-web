@@ -38,7 +38,7 @@ function ResetPassword() {
       
      
     <div className="flex items-center justify-center">
-      <div className="w-1/2 p-8 bg-white  ">
+      <div className="w-1/2 p-8  ">
       <h2 className="text-2xl font-bold mb-4 font-kanit ">
                   Welcome to{" "}
                   <span className="text-[#F3747F]">สรุปสายศิลป์</span> <br />

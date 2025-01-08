@@ -54,7 +54,7 @@ const Login = () => {
               </div>
             </div>
             {/* Form Section */}
-            <div className="w-full lg:w-1/2 p-4 md:p-8 bg-white">
+            <div className="w-full lg:w-1/2 p-4 md:p-8 ">
               <h2 className="text-xl md:text-2xl font-bold mb-4 font-kanit  text-center lg:text-left">
                 Welcome to <span className="text-[#F3747F]">สรุปสายศิลป์</span>{" "}
                 <br />
