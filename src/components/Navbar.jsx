@@ -45,6 +45,12 @@ function Navbar() {
             <p className="font-noto-sans-jp text-lg"> コース</p>
           </div>
         </Link>
+        <Link to="/jlpt">
+          <div className="text-center cursor-pointer ">
+            <p> JLPT</p>
+            <p className="font-noto-sans-jp text-lg"> 日本語能力試験</p>
+          </div>
+        </Link>
         <Link to="/article">
           <div className="text-center cursor-pointer ">
             <p>บทความที่น่าสนใจ</p>

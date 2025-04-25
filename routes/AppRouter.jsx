@@ -26,6 +26,8 @@ import Payment from "../src/pages/Payment";
 import UserData from "../src/pages/UserData";
 import ForgotPassword from "../src/pages/ForgetPassword";
 import ResetPassword from "../src/pages/ResetPassword";
+import JlptTest from "../src/pages/JlptTest";
+import InsideJlpt from '../src/pages/pages-inside/InsideJlpt'
 
 function AppRouter() {
   const { token,role } = useAuthStore();
@@ -37,8 +39,9 @@ function AppRouter() {
         { index: true, element: <Home /> },
         { path: "about", element: <AboutUs /> },
         // page for selling the book
+        {path:"jlpt",element:<JlptTest/>},
+        { path: "jlpt/:id", element:<InsideJlpt/> },
         { path: "test", element: <Test /> },
-
         { path: "course", element: <Course /> },
         { path: "course/:id", element: <InsideCourse /> },
 
