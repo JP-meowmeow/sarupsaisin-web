@@ -1,6 +1,7 @@
 import React from "react";
 import JlptCard from '../components/JlptCard'
-function dadass() {
+
+function JlptTest() {
 
     const jlptDetails = [
         {
@@ -44,4 +45,4 @@ function dadass() {
   );
 }
 
-export default dadass;
+export default JlptTest;

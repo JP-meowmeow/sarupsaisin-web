@@ -3,7 +3,7 @@ import useAuthStore from "../../store/authStore";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function CourseCard({item}) {
+function JlptCard({item}) {
 
   return (
     <div className="p-4 md:p-0 w-full ">
@@ -11,7 +11,7 @@ function CourseCard({item}) {
         <figure className="overflow-hidden">
           <img
             src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1733926554/1080_px_x_1080_px_allavg.png"
-            alt="article"
+            alt={"Jlpt" + "N"+item.id} 
             className="w-full h-full object-fill"
           />
         </figure>
@@ -20,7 +20,7 @@ function CourseCard({item}) {
             <h2 className="card-title text-[32px]  sm:text-xl mb-2">{item.name}</h2>
             <div className=" mb-4">
               <p className="text-[18px] sm:text-base line-clamp-2 mt-2">
-              N5 : สามารถเข้าใจพื้นฐานภาษาญี่ปุ่นได้ในระดับหนึ่ง
+              {item.details}
               </p>
             </div>
           </div>
@@ -41,4 +41,4 @@ function CourseCard({item}) {
   );
 }
 
-export default CourseCard;
+export default JlptCard;

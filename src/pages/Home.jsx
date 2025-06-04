@@ -2,11 +2,13 @@ import React from "react";
 import Tiktok from "../components/Tiktok";
 import { Link } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
+import LandingPopup from "../components/LandingPopup";
 
 function Home() {
   const token = useAuthStore((state) => state.token);
   return (
     <div className="flex flex-col min-h-screen bg-[#FCFBF8] overflow-x-hidden">
+        <LandingPopup/>
       {/* Adjusted padding for better mobile response */}
       <div className="pt-16 px-2 sm:px-4 lg:px-8">
         <div className="grid grid-cols-1 ">
