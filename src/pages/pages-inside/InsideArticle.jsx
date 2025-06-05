@@ -47,7 +47,7 @@ export default function InsideArticle() {
     : "";
 
   return (
-    <div className="mx-24 mt-16 pt-16 py-24 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
+    <div className="px-24 mt-16 pt-16 py-24 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="mx-16 flex justify-between -mb-5">
         <h1 className="text-2xl font-bold font-kanit ">{data.articleName}</h1>
         <h1>
@@ -63,7 +63,10 @@ export default function InsideArticle() {
             alt=""
             className="w-[600px] mx-10"
           />
-          <h1 className="mt-8 mb-8 mx-10">{data.articleDetails}</h1>
+          <div
+  className="prose max-w-none"
+  dangerouslySetInnerHTML={{ __html: data.articleDetails }}
+></div>
         </div>
         <div className="w-[320px]">
           <div className="w-full  ">

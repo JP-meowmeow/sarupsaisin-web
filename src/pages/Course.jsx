@@ -3,31 +3,37 @@ import useAuthStore from "../../store/authStore";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import CourseCard from "../components/CourseCard";
+import Spinner from "../components/Spinner";
+
 const URL = import.meta.env.VITE_API_URL;
 
 function Course() {
   const role = useAuthStore((state) => state.role);
+  const [isLoading, setIsLoading] = useState(false);
   const [course, setCourse] = useState([]);
-  const [allCourse,setAllCourse] =useState([]);
+  const [allCourse, setAllCourse] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
-  //reverse 
+  //reverse
   const reversedCourse = [...course].reverse();
 
   //  // Pagination logic
-   const indexOfLastCourse = currentPage * itemsPerPage;
-   const indexOfFirstCourse = indexOfLastCourse - itemsPerPage;
-   const currentCourse = reversedCourse.slice(indexOfFirstCourse, indexOfLastCourse);
-   const totalPages = Math.ceil(course.length / itemsPerPage);
+  const indexOfLastCourse = currentPage * itemsPerPage;
+  const indexOfFirstCourse = indexOfLastCourse - itemsPerPage;
+  const currentCourse = reversedCourse.slice(
+    indexOfFirstCourse,
+    indexOfLastCourse
+  );
+  const totalPages = Math.ceil(course.length / itemsPerPage);
 
   //  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   //  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
   const nextPage = () => setCurrentPage((prev) => prev + 1);
-   const prevPage = () => setCurrentPage((prev) => prev - 1);
+  const prevPage = () => setCurrentPage((prev) => prev - 1);
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllCourse();
-  },[])
+  }, []);
 
   const filterN5 = () => {
     const JLPTN5 = allCourse.filter((item) => {
@@ -62,20 +68,23 @@ function Course() {
   };
 
   const filterAll = () => {
-  
     setCourse(allCourse);
   };
 
-
-  const getAllCourse = async ()=>{
-    // const response = await axios.get('http://localhost:8000/course/getallcourse')
-    const response = await axios.get(`${URL}/course/getallcourse`)
-    console.log('response',response)
-    setCourse(response.data.allCourse)
-    setAllCourse(response.data.allCourse)
-  }
-
-
+  const getAllCourse = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(`${URL}/course/getallcourse`);
+      console.log("response", response);
+      setCourse(response.data.allCourse);
+      setAllCourse(response.data.allCourse);
+      setIsLoading(false);
+    } catch (err) {
+      const errMessage = err.response?.data?.error || err.message;
+      console.log(errMessage);
+      toast.error(errMessage);
+    }
+  };
 
   return (
     <div className="px-4 sm:px-8 lg:px-16 py-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
@@ -109,24 +118,36 @@ function Course() {
             Create course
           </Link>
         )}
-        <button className="btn btn-sm" onClick={filterN5}>JLPT N5</button>
-        <button className="btn btn-sm" onClick={filterN4}>JLPT N4</button>
-        <button className="btn btn-sm" onClick={filterN3}>JLPT N3</button>
-        <button className="btn btn-sm font-noto-sans-jp" onClick={filterOther}>その他</button>
-        <button className="btn btn-sm" onClick={filterAll}>All</button>
+        <button className="btn btn-sm" onClick={filterN5}>
+          JLPT N5
+        </button>
+        <button className="btn btn-sm" onClick={filterN4}>
+          JLPT N4
+        </button>
+        <button className="btn btn-sm" onClick={filterN3}>
+          JLPT N3
+        </button>
+        <button className="btn btn-sm font-noto-sans-jp" onClick={filterOther}>
+          その他
+        </button>
+        <button className="btn btn-sm" onClick={filterAll}>
+          All
+        </button>
       </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center w-full min-h-[50vh]">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 mb-4 sm:grid-cols-2 lg:grid-cols-4 gap-5 ">
+          {currentCourse.map((item) => (
+            <CourseCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
 
-     
-
-      <div className="grid grid-cols-1 mb-4 sm:grid-cols-2 lg:grid-cols-4 gap-5 ">
-      {currentCourse.map((item) => (
-          <CourseCard key={item.id} item={item} />
-        ))}
-        
-      </div>
-
-       {/* Pagination controls */}
-       <div className="flex justify-center mb-20 items-center">
+      {/* Pagination controls */}
+      <div className="flex justify-center mb-20 items-center">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}

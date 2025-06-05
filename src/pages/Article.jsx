@@ -3,68 +3,78 @@ import useAuthStore from "../../store/authStore";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
+import Spinner from "../components/Spinner";
+
 const URL = import.meta.env.VITE_API_URL;
 
 function Article() {
   const role = useAuthStore((state) => state.role);
   const [article, setArticle] = useState([]);
   const [allArticle, setAllArticle] = useState([]);
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     getAllArticle();
   }, []);
-  
+
   const getAllArticle = async () => {
-    console.log("API Base URL:", URL);
-    const response = await axios.get(
-      // "http://localhost:8000/article/getallarticle"
-      `${URL}/article/getallarticle`
-    );
-    setArticle(response.data.allArticle);
-    setAllArticle(response.data.allArticle);
+    try {
+      setIsLoading(true);
+      const response = await axios.get(
+        // "http://localhost:8000/article/getallarticle"
+        `${URL}/article/getallarticle`
+      );
+      setArticle(response.data.allArticle);
+      setAllArticle(response.data.allArticle);
+      setIsLoading(false);
+    } catch (err) {
+      const errMessage = err.response?.data?.error || err.message;
+      console.log(errMessage);
+      toast.error(errMessage);
+    }
   };
-  
+
   const filterN5 = () => {
     const JLPTN5 = allArticle.filter((item) => {
       return item.category === "JLPTN5";
     });
-    
+
     setArticle(JLPTN5);
   };
-  
+
   const filterN4 = () => {
     const JLPTN4 = allArticle.filter((item) => {
       return item.category === "JLPTN4";
     });
-    
+
     setArticle(JLPTN4);
   };
-  
+
   const filterN3 = () => {
     const JLPTN3 = allArticle.filter((item) => {
       return item.category === "JLPTN3";
     });
-    
+
     setArticle(JLPTN3);
   };
-  
+
   const filterOther = () => {
     const OTHER = allArticle.filter((item) => {
       return item.category === "OTHER";
     });
-    
+
     setArticle(OTHER);
   };
-  
+
   const filterAll = () => {
     setArticle(allArticle);
   };
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8; // 2 rows * 4 items per row
   //reverse
   const reversedArticles = [...article].reverse();
-  
+
   // Pagination logic
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
@@ -129,14 +139,17 @@ function Article() {
           All
         </button>
       </div>
-
-      
-
-      <div className="grid grid-cols-1  mb-4 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {currentArticles.map((item) => (
-          <ArticleCard key={item.id} item={item} />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center w-full min-h-[50vh]">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1  mb-4 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {currentArticles.map((item) => (
+            <ArticleCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
       {/* Pagination controls */}
       <div className="flex justify-center mb-20 items-center">
         <button

@@ -4,12 +4,14 @@ import useAuthStore from "../../../store/authStore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../../components/Spinner";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function CreateArticle() {
   const createArticle = useArticleStore((state) => state.createArticle);
   const token = useAuthStore((state) => state.token);
   const navigate = useNavigate();
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [form, setForm] = useState({
     header: "",
@@ -30,7 +32,7 @@ export default function CreateArticle() {
 
   const hdlCreateArticle = async (e) => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       const body = new FormData();
       body.append("header", form.header);
       body.append("detail", form.detail);
@@ -38,7 +40,7 @@ export default function CreateArticle() {
         body.append("link", file);
       }
       await createArticle(body, token);
-      setIsLoading(false)
+      setIsLoading(false);
       navigate("/article");
 
       toast.success("create article");
@@ -60,8 +62,9 @@ export default function CreateArticle() {
           className="input input-bordered  w-1/2 max-w-xs"
           onChange={hdlChange}
         />
-        {isLoading ? <Spinner/> :
-        form.header && form.detail && file ? (
+        {isLoading ? (
+          <Spinner />
+        ) : form.header && form.detail && file ? (
           <button className="btn" onClick={hdlCreateArticle}>
             Submit Article
           </button>
@@ -104,12 +107,11 @@ export default function CreateArticle() {
         )}
       </div>
       <div className="flex justify-center mt-10 w-full">
-        <textarea
-          placeholder="เนื้อหาบทความ Article Details"
-          name="detail"
-          onChange={hdlChange}
-          className="textarea textarea-bordered textarea-lg w-full max-w-[1000px] border "
-          rows={10}
+        <ReactQuill
+          theme="snow"
+          value={form.detail}
+          onChange={(value) => setForm((prev) => ({ ...prev, detail: value }))}
+          className="bg-white w-full max-w-[1000px] mx-auto"
         />
       </div>
     </div>

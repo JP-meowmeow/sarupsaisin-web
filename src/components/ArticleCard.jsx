@@ -7,6 +7,7 @@ export default function ArticleCard({ item }) {
     <div className="p-4 md:p-0 w-full ">
       <div className="flex flex-col h-[100%] card card-compact bg-base-100 w-full shadow-xl">
         <figure className="overflow-hidden">
+          
           <img
             src={item.articleThumbnailLink}
             alt="article"
@@ -14,8 +15,8 @@ export default function ArticleCard({ item }) {
           />
         </figure>
         <div className="card-body flex flex-col flex-1">
+         
           <h2 className="line-clamp-2 card-title text-[32px]  sm:text-xl mb-2">{item.articleName}</h2>
-          <p className="line-clamp-2">{item.articleDetails}</p>
           <div className="card-actions justify-center ">
             <Link
               to={"/article/" + item.id}
