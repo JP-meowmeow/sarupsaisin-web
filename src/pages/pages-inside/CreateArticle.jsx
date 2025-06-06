@@ -21,13 +21,10 @@ export default function CreateArticle() {
 
   const hdlChange = (e) => {
     setForm((prv) => ({ ...prv, [e.target.name]: e.target.value }));
-    console.log(form);
   };
 
   const hdlFileChange = (e) => {
-    console.log(e.target.files);
     setFile(e.target.files[0]);
-    console.log(form);
   };
 
   const hdlCreateArticle = async (e) => {
@@ -36,6 +33,7 @@ export default function CreateArticle() {
       const body = new FormData();
       body.append("header", form.header);
       body.append("detail", form.detail);
+      body.append("category", form.category);
       if (file) {
         body.append("link", file);
       }

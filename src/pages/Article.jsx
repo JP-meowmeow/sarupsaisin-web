@@ -12,6 +12,7 @@ function Article() {
   const [article, setArticle] = useState([]);
   const [allArticle, setAllArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("ALL");
 
   useEffect(() => {
     getAllArticle();
@@ -40,6 +41,7 @@ function Article() {
     });
 
     setArticle(JLPTN5);
+    setSelectedFilter("JLPTN5");
   };
 
   const filterN4 = () => {
@@ -48,6 +50,7 @@ function Article() {
     });
 
     setArticle(JLPTN4);
+    setSelectedFilter("JLPTN4");
   };
 
   const filterN3 = () => {
@@ -56,6 +59,7 @@ function Article() {
     });
 
     setArticle(JLPTN3);
+    setSelectedFilter("JLPTN3");
   };
 
   const filterOther = () => {
@@ -64,10 +68,12 @@ function Article() {
     });
 
     setArticle(OTHER);
+    setSelectedFilter("OTHER");
   };
 
   const filterAll = () => {
     setArticle(allArticle);
+    setSelectedFilter("ALL");
   };
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -97,7 +103,8 @@ function Article() {
         </h2>
       </div>
       <div className="divider -mt-3"></div>
-      <div className="flex justify-end mb-4">
+      {/* searchbar */}
+      {/* <div className="flex justify-end mb-4">
         <label className="input input-bordered flex items-center w-full md:w-1/2 lg:w-1/3 ">
           <input type="text" className="flex-grow" placeholder="Search" />
           <svg
@@ -113,7 +120,8 @@ function Article() {
             />
           </svg>
         </label>
-      </div>
+      </div> */}
+
       <div className="flex gap-3 flex-wrap justify-center md:justify-end mb-5">
         {role === "ADMIN" ? (
           <Link
@@ -123,19 +131,19 @@ function Article() {
             Create Post
           </Link>
         ) : null}
-        <button className="btn btn-sm" onClick={filterN5}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN5" ? "bg-pink-300 text-black" : ""}`} onClick={filterN5}>
           JLPT N5
         </button>
-        <button className="btn btn-sm" onClick={filterN4}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN4" ? "bg-pink-300 text-black" : ""}`} onClick={filterN4}>
           JLPT N4
         </button>
-        <button className="btn btn-sm" onClick={filterN3}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN3" ? "bg-pink-300 text-black" : ""}`} onClick={filterN3}>
           JLPT N3
         </button>
-        <button className="btn btn-sm font-noto-sans-jp" onClick={filterOther}>
+        <button className={`btn btn-sm font-noto-sans-jp ${selectedFilter === "OTHER" ? "bg-pink-300 text-black" : ""}`}  onClick={filterOther}>
           その他
         </button>
-        <button className="btn btn-sm" onClick={filterAll}>
+        <button className={`btn btn-sm ${selectedFilter === "ALL" ? "bg-pink-300 text-black" : ""}`} onClick={filterAll}>
           All
         </button>
       </div>

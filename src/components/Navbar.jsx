@@ -33,14 +33,14 @@ function Navbar() {
           </div>
         </Link>
 
-        <Link to="#">
+        <div to="#">
         {/* ปิดไว้ก่อนรอข้อสอบเสร็จ */}
         {/* <Link to="/test" >  */}
           <div className="text-center  ">
             <p>หนังสือเรียน/ข้อสอบเก่า</p>
             <p className="font-noto-sans-jp text-lg">本・テスト</p>
           </div>
-        </Link>
+        </div>
         <Link to="/course">
           <div className="text-center cursor-pointer ">
             <p> คอร์สเรียน</p>
@@ -48,14 +48,14 @@ function Navbar() {
           </div>
         </Link>
 
-        <Link to="#">
+        <div to="#">
         {/* ปิดไว้ก่อนรอข้อสอบเสร็จ */}
         {/* <Link to="/jlpt"> */}
           <div className="text-center">
             <p> JLPT</p>
             <p className="font-noto-sans-jp text-lg"> 日本語能力試験</p>
           </div>
-        </Link>
+        </div>
         <Link to="/article">
           <div className="text-center cursor-pointer ">
             <p>บทความที่น่าสนใจ</p>

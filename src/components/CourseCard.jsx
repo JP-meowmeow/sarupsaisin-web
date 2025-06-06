@@ -10,16 +10,16 @@ function CourseCard({item}) {
         <figure className="overflow-hidden">
           <img
             src={item.courseThumbnailLink}
-            alt="article"
+            alt={item.courseName}
             className="w-full h-full object-fill"
           />
         </figure>
           <div className="card-body flex flex-col flex-1">
           <div className="flex-1">
-            <h2 className="card-title text-[32px]  sm:text-xl mb-2">{item.courseName}</h2>
+            <h2 className="card-title text-[24px] text-center sm:text-left  sm:text-xl mb-2">{item.courseName}</h2>
             <div className=" mb-4">
-              <p className="text-[18px] sm:text-base line-clamp-2 mt-2">
-                {item.shortDescription.slice(0, 30)}
+              <p className="text-[18px] text-center sm:text-left sm:text-base line-clamp-2 mt-2">
+                {item.shortDescription.slice(0, 50)}
               </p>
             </div>
           </div>
