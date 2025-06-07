@@ -34,10 +34,10 @@ function Home() {
               bg-[url('https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566776/logo_pink_z8sarx.png')]
                bg-contain bg-right bg-no-repeat "
               >
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 font-kanit">
+                <h1 className="text-xl sm:text-2xl text-black lg:text-3xl font-bold mb-2 sm:mb-4 font-kanit">
                   เรียนภาษาญี่ปุ่นกับ sarupsaisin
                 </h1>
-                <p className="mb-2 sm:mb-4 font-kanit text-sm sm:text-base">
+                <p className="mb-2 sm:mb-4 font-kanit text-black  text-sm sm:text-base">
                   สื่อการเรียนรู้ภาษาญี่ปุ่นของคนรุ่นใหม่
                 </p>
                 <div className="flex space-x-2 sm:space-x-4">
@@ -46,14 +46,14 @@ function Home() {
                   ) : (
                     <Link
                       to="/login"
-                      className="btn btn-sm bg-[#F3747F] text-white px-2 sm:px-4 py-1 sm:py-2 sm:pb-8 rounded font-kanit text-sm sm:text-base"
+                      className="btn btn-sm bg-[#F3747F] text-white px-2 sm:px-4 border-[#F3747F] py-1 sm:py-2 sm:pb-8 rounded font-kanit text-sm sm:text-base"
                     >
                       เข้าสู่ระบบ
                     </Link>
                   )}
                   <Link
                     to="/course/3"
-                    className="btn btn-sm bg-[#F3747F] text-white px-2 sm:px-4 py-1 sm:py-2 sm:pb-8 rounded font-kanit text-sm sm:text-base"
+                    className="btn btn-sm bg-[#F3747F] border-[#F3747F] text-white  px-2 sm:px-4 py-1 sm:py-2 sm:pb-8 rounded font-kanit text-sm sm:text-base"
                   >
                     ทดลองเรียน
                   </Link>
@@ -76,9 +76,9 @@ function Home() {
         <div className="w-full max-w-7xl mx-auto -mt-5 ">
           {/* Course Section */}
           <div className="mb-4 sm:mb-8 text-center lg:text-left">
-            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit">
+            <h2 className="text-xl sm:text-2xl text-black font-bold mb-2 sm:mb-4 font-kanit">
               คอร์สเรียนภาษาญี่ปุ่น{" "}
-              <span className="font-noto-sans-jp text-xl sm:text-2xl">
+              <span className="font-noto-sans-jp text-black text-xl sm:text-2xl">
                 コース
               </span>
             </h2>
@@ -111,7 +111,7 @@ function Home() {
             <div className="flex justify-center mt-4 sm:mt-8">
               <Link
                 to="/course"
-                className="btn btn-sm sm:btn-md text-[12px]  w-full  sm:w-3/4 lg:w-1/2 bg-[#F3747F] font-kanit text-white tracking-widest sm:text-lg"
+                className="btn btn-sm sm:btn-md text-[12px]  w-full  sm:w-3/4 lg:w-1/2 bg-[#F3747F] border-[#F3747F] font-kanit text-white tracking-widest sm:text-lg"
               >
                 all course คอร์สเรียนทั้งหมด
               </Link>
@@ -120,9 +120,9 @@ function Home() {
 
           {/* Articles Section */}
           <div className="mb-4 sm:mb-8 ">
-            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left ">
+            <h2 className="text-xl text-black sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left ">
               บทความที่น่าสนใจ{" "}
-              <span className="font-noto-sans-jp text-xl sm:text-2xl">
+              <span className="font-noto-sans-jp text-black text-xl sm:text-2xl">
                 記事
               </span>
             </h2>
@@ -156,7 +156,7 @@ function Home() {
             <div className="flex justify-center mt-4 sm:mt-8">
               <Link
                 to="/article"
-                className="btn btn-sm sm:btn-md text-[12px] w-full sm:w-3/4 lg:w-1/2 bg-[#F3747F] font-kanit text-white tracking-widest  sm:text-lg"
+                className="btn btn-sm sm:btn-md text-[12px] w-full border-[#F3747F] sm:w-3/4 lg:w-1/2 bg-[#F3747F] font-kanit text-white tracking-widest  sm:text-lg"
               >
                 all article บทความที่น่าสนใจทั้งหมด
               </Link>
@@ -165,9 +165,9 @@ function Home() {
 
           {/* Social Media Section */}
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left">
+            <h2 className="text-xl sm:text-2xl text-black font-bold mb-2 sm:mb-4 font-kanit text-center lg:text-left">
               Social Media{" "}
-              <span className="font-noto-sans-jp text-xl sm:text-2xl">
+              <span className="font-noto-sans-jp text-xl text-black sm:text-2xl">
                 ソーシャル
               </span>
             </h2>

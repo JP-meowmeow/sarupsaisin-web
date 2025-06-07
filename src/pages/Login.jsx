@@ -70,7 +70,7 @@ const Login = () => {
                     value={form.email}
                     onChange={hdlChange}
                     placeholder="Email メールアドレス"
-                    className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
+                    className="w-full p-2 border border-gray-300 bg-slate-200 rounded-md font-noto-sans-jp"
                   />
                 </div>
                 <div className="relative">
@@ -80,7 +80,7 @@ const Login = () => {
                     value={form.password}
                     onChange={hdlChange}
                     placeholder="Password パスワード"
-                    className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
+                    className="w-full p-2 border border-gray-300 bg-slate-200 rounded-md font-noto-sans-jp"
                   />
                 </div>
                 <div className="flex items-center justify-between">

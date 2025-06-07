@@ -131,19 +131,19 @@ function Article() {
             Create Post
           </Link>
         ) : null}
-        <button className={`btn btn-sm ${selectedFilter === "JLPTN5" ? "bg-pink-300 text-black" : ""}`} onClick={filterN5}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN5" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterN5}>
           JLPT N5
         </button>
-        <button className={`btn btn-sm ${selectedFilter === "JLPTN4" ? "bg-pink-300 text-black" : ""}`} onClick={filterN4}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN4" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterN4}>
           JLPT N4
         </button>
-        <button className={`btn btn-sm ${selectedFilter === "JLPTN3" ? "bg-pink-300 text-black" : ""}`} onClick={filterN3}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN3" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterN3}>
           JLPT N3
         </button>
-        <button className={`btn btn-sm font-noto-sans-jp ${selectedFilter === "OTHER" ? "bg-pink-300 text-black" : ""}`}  onClick={filterOther}>
+        <button className={`btn btn-sm font-noto-sans-jp ${selectedFilter === "OTHER" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`}  onClick={filterOther}>
           その他
         </button>
-        <button className={`btn btn-sm ${selectedFilter === "ALL" ? "bg-pink-300 text-black" : ""}`} onClick={filterAll}>
+        <button className={`btn btn-sm ${selectedFilter === "ALL" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterAll}>
           All
         </button>
       </div>

@@ -95,9 +95,9 @@ function Course() {
   return (
     <div className="px-4 sm:px-8 lg:px-16 py-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="pt-10 flex justify-center">
-        <h2 className="text-xl sm:text-2xl  font-bold mb-4 font-kanit ">
+        <h2 className="text-xl sm:text-2xl  text-black font-bold mb-4 font-kanit ">
           คอร์สเรียนภาษาญี่ปุ่น
-          <span className="font-noto-sans-jp text-2xl"> コース</span>
+          <span className="font-noto-sans-jp text-black text-2xl"> コース</span>
         </h2>
       </div>
       <div className="divider -mt-3"></div>
@@ -128,23 +128,23 @@ function Course() {
         )}
         <button
           className={`btn btn-sm ${
-            selectedFilter === "JLPTN5" ? "bg-pink-300 text-black" : ""
+            selectedFilter === "JLPTN5" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
           }`}
           onClick={filterN5}
         >
           JLPT N5
         </button>
         <button
-          className={`btn btn-sm ${
-            selectedFilter === "JLPTN4" ? "bg-pink-300 text-black" : ""
+          className={`btn btn-sm  ${
+            selectedFilter === "JLPTN4" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
           }`}
           onClick={filterN4}
         >
           JLPT N4
         </button>
         <button
-          className={`btn btn-sm ${
-            selectedFilter === "JLPTN3" ? "bg-pink-300 text-black" : ""
+          className={`btn btn-sm  ${
+            selectedFilter === "JLPTN3" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
           }`}
           onClick={filterN3}
         >
@@ -152,7 +152,7 @@ function Course() {
         </button>
         <button
           className={`btn btn-sm font-noto-sans-jp ${
-            selectedFilter === "OTHER" ? "bg-pink-300 text-black" : ""
+            selectedFilter === "OTHER" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
           }`}
           onClick={filterOther}
         >
@@ -160,7 +160,7 @@ function Course() {
         </button>
         <button
           className={`btn btn-sm ${
-            selectedFilter === "ALL" ? "bg-pink-300 text-black" : ""
+            selectedFilter === "ALL" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
           }`}
           onClick={filterAll}
         >
