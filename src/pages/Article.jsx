@@ -97,7 +97,7 @@ function Article() {
   return (
     <div className="px-4 sm:px-8 lg:px-16 py-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="pt-10 flex justify-center">
-        <h2 className="text-xl sm:text-2xl  font-bold mb-4 font-kanit ">
+        <h2 className="text-xl sm:text-2xl text-black font-bold mb-4 font-kanit ">
           บทความที่น่าสนใจ
           <span className="font-noto-sans-jp text-2xl"> 記事</span>
         </h2>
@@ -131,19 +131,19 @@ function Article() {
             Create Post
           </Link>
         ) : null}
-        <button className={`btn btn-sm ${selectedFilter === "JLPTN5" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterN5}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN5" ? "bg-pink-300 border-pink-300 text-black" : "border-slate-200 bg-slate-200"}`} onClick={filterN5}>
           JLPT N5
         </button>
-        <button className={`btn btn-sm ${selectedFilter === "JLPTN4" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterN4}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN4" ? "bg-pink-300 border-pink-300 text-black" : "border-slate-200 bg-slate-200"}`} onClick={filterN4}>
           JLPT N4
         </button>
-        <button className={`btn btn-sm ${selectedFilter === "JLPTN3" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterN3}>
+        <button className={`btn btn-sm ${selectedFilter === "JLPTN3" ? "bg-pink-300 border-pink-300 text-black" : "border-slate-200 bg-slate-200"}`} onClick={filterN3}>
           JLPT N3
         </button>
-        <button className={`btn btn-sm font-noto-sans-jp ${selectedFilter === "OTHER" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`}  onClick={filterOther}>
+        <button className={`btn btn-sm font-noto-sans-jp ${selectedFilter === "OTHER" ? "bg-pink-300 border-pink-300 text-black" : "border-slate-200 bg-slate-200"}`}  onClick={filterOther}>
           その他
         </button>
-        <button className={`btn btn-sm ${selectedFilter === "ALL" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"}`} onClick={filterAll}>
+        <button className={`btn btn-sm ${selectedFilter === "ALL" ? "bg-pink-300 border-pink-300 text-black" : "border-slate-200 bg-slate-200"}`} onClick={filterAll}>
           All
         </button>
       </div>

@@ -14,7 +14,7 @@ function CourseCard({item}) {
             className="w-full h-full object-fill"
           />
         </figure>
-          <div className="card-body flex flex-col flex-1">
+          <div className="card-body bg-slate-50 flex flex-col flex-1">
           <div className="flex-1">
             <h2 className="card-title text-[24px] text-center sm:text-left  sm:text-xl mb-2">{item.courseName}</h2>
             <div className=" mb-4">

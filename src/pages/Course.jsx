@@ -128,7 +128,7 @@ function Course() {
         )}
         <button
           className={`btn btn-sm ${
-            selectedFilter === "JLPTN5" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
+            selectedFilter === "JLPTN5" ? "bg-pink-300 border-pink-300 text-black" : "border-slate-200 bg-slate-200"
           }`}
           onClick={filterN5}
         >
@@ -136,7 +136,7 @@ function Course() {
         </button>
         <button
           className={`btn btn-sm  ${
-            selectedFilter === "JLPTN4" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
+            selectedFilter === "JLPTN4" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200 border-slate-200"
           }`}
           onClick={filterN4}
         >
@@ -144,7 +144,7 @@ function Course() {
         </button>
         <button
           className={`btn btn-sm  ${
-            selectedFilter === "JLPTN3" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
+            selectedFilter === "JLPTN3" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200 border-slate-200"
           }`}
           onClick={filterN3}
         >
@@ -152,7 +152,7 @@ function Course() {
         </button>
         <button
           className={`btn btn-sm font-noto-sans-jp ${
-            selectedFilter === "OTHER" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
+            selectedFilter === "OTHER" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200 border-slate-200"
           }`}
           onClick={filterOther}
         >
@@ -160,7 +160,7 @@ function Course() {
         </button>
         <button
           className={`btn btn-sm ${
-            selectedFilter === "ALL" ? "bg-pink-300 border-pink-300 text-black" : "bg-slate-200"
+            selectedFilter === "ALL" ? "bg-pink-300 border-pink-300 text-black" : "border-slate-200 bg-slate-200"
           }`}
           onClick={filterAll}
         >
