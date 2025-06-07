@@ -14,9 +14,9 @@ export default function ArticleCard({ item }) {
             className="w-full h-1080 object-fill"
           />
         </figure>
-        <div className="card-body flex flex-col bg-slate-50 flex-1">
+        <div className="card-body flex flex-col bg-gray-100 flex-1">
          
-          <h2 className="line-clamp-2 card-title text-[16px]  sm:text-xl mb-2">{item.articleName}</h2>
+          <h2 className="line-clamp-2 text-black card-title text-[16px]  sm:text-xl mb-2">{item.articleName}</h2>
           <div className="card-actions justify-center ">
             <Link
               to={"/article/" + item.id}

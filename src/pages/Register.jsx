@@ -86,7 +86,7 @@ function Register() {
                     name="email"
                     value={form.email}
                     onChange={hdlChange}
-                    className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
+                    className="w-full p-2 border border-gray-300 bg-slate-200 rounded-md font-noto-sans-jp"
                   />
                 </div>
                 <div className="">
@@ -97,7 +97,7 @@ function Register() {
                     name="password"
                     value={form.password}
                     onChange={hdlChange}
-                    className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
+                    className="w-full p-2 border border-gray-300 bg-slate-200 rounded-md font-noto-sans-jp"
                   />
                 </div>
                 <div className="">
@@ -107,7 +107,7 @@ function Register() {
                     value={form.confirmPassword}
                     onChange={hdlChange}
                     placeholder="Confirm Password パスワード確認"
-                    className="w-full p-2 border border-gray-300 rounded-md font-noto-sans-jp"
+                    className="w-full p-2 border border-gray-300 bg-slate-200 rounded-md font-noto-sans-jp"
                   />
                 </div>
                 <div className="flex items-center justify-between">
