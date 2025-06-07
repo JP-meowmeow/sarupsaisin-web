@@ -97,9 +97,10 @@ function Article() {
   return (
     <div className="px-4 sm:px-8 lg:px-16 py-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
       <div className="pt-10 flex justify-center">
-        <h2 className="text-xl sm:text-2xl text-black font-bold mb-4 font-kanit ">
-          บทความที่น่าสนใจ
-          <span className="font-noto-sans-jp text-2xl"> 記事</span>
+        <h2 className="text-xl sm:text-2xl text-black font-bold mb-4 font-kanit text-center ">
+          บทความภาษาญี่ปุ่นที่น่าสนใจ
+          <br/>
+          <span className="font-noto-sans-jp text-2xl"> 日本語の記事</span>
         </h2>
       </div>
       <div className="divider -mt-3"></div>

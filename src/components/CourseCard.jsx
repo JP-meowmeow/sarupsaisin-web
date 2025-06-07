@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-import useAuthStore from "../../store/authStore";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 function CourseCard({item}) {
   return (

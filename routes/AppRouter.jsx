@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Login from "../src/pages/Login";
 import AboutUs from "../src/pages/AboutUs";
-import Test from "../src/pages/Test";
+import Book from "../src/pages/Book";
 import Course from "../src/pages/Course";
 import Register from "../src/pages/Register";
 import App from "../src/App";
@@ -28,6 +28,8 @@ import ForgotPassword from "../src/pages/ForgetPassword";
 import ResetPassword from "../src/pages/ResetPassword";
 import JlptTest from "../src/pages/JlptTest";
 import InsideJlpt from '../src/pages/pages-inside/InsideJlpt'
+import CreateBook from "../src/pages/pages-inside/CreateBook";
+import InsideBook from '../src/pages/pages-inside/InsideBook'
 
 function AppRouter() {
   const { token,role } = useAuthStore();
@@ -38,10 +40,18 @@ function AppRouter() {
       children: [
         { index: true, element: <Home /> },
         { path: "about", element: <AboutUs /> },
-        // page for selling the book
+       
+      //  page for sell book
+        { path: "book", element: <Book /> },
+       { path: "book/:id", element: <InsideBook/> }, 
+       {
+          path: "book/create",
+          element: role === "ADMIN" ? <CreateBook/> : <Navigate to='/'/>,
+        },
+       
+        // page for selling the test
         {path:"jlpt",element:<JlptTest/>},
         { path: "jlpt/:id", element:<InsideJlpt/> },
-        { path: "test", element: <Test /> },
         { path: "course", element: <Course /> },
         { path: "course/:id", element: <InsideCourse /> },
 

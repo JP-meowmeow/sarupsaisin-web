@@ -9,66 +9,70 @@ function Navbar() {
   const handleLogout = () => {
     logout();
   };
-  const classCss  = 'text-[18px] sm:text-[18px]'
+  const classCss = "text-[18px] sm:text-[18px]";
   return (
     <div className="text-[10px] lg:text-[16px] h-16 w-full fixed p-2 top-0 z-10 px-3 flex justify-around shadow-lg bg-[#F8DFDF] font-kanit ">
       <div className="flex gap-5 md:gap-10  lg:gap-20">
-          <div className="block sm:hidden">
-            <img src="../src/images/logo pink.png" alt=""  className="w-[50px] "/>
-          </div>
+        <div className="block sm:hidden">
+          <img src="../src/images/logo pink.png" alt="" className="w-[50px] " />
+        </div>
         <div className="hidden sm:flex gap-5 md:gap-10 lg:gap-20">
-        <Link to="/">
-          <div className="logo ">
-            <img
-              src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1728973591/logo_sevw72.png"
-              alt="sarupsaisin logo"
-              className="w-[100px] h-[100px] cursor-pointer -mt-7"
-            />
-          </div>
-        </Link>
-        <Link to="/about">
-          <div className=" text-center cursor-pointer  ">
-            <p>รู้จักกันสักหน่อย</p>
-            <p className="font-noto-sans-jp text-lg ">自己紹介</p>
-          </div>
-        </Link>
+          <Link to="/">
+            <div className="logo ">
+              <img
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1728973591/logo_sevw72.png"
+                alt="sarupsaisin logo"
+                className="w-[100px] h-[100px] cursor-pointer -mt-7"
+              />
+            </div>
+          </Link>
+          <Link to="/about">
+            <div className=" text-center cursor-pointer  ">
+              <p>รู้จักกันสักหน่อย</p>
+              <p className="font-noto-sans-jp text-lg ">自己紹介</p>
+            </div>
+          </Link>
 
-        <div to="#">
-        {/* ปิดไว้ก่อนรอข้อสอบเสร็จ */}
-        {/* <Link to="/test" >  */}
-          <div className="text-center  ">
-            <p>หนังสือเรียน/ข้อสอบเก่า</p>
-            <p className="font-noto-sans-jp text-lg">本・テスト</p>
-          </div>
-        </div>
-        <Link to="/course">
-          <div className="text-center cursor-pointer ">
-            <p> คอร์สเรียน</p>
-            <p className="font-noto-sans-jp text-lg"> コース</p>
-          </div>
-        </Link>
+          <Link to="/book">
+            <div className="text-center  ">
+              <p>หนังสือเรียน/ข้อสอบเก่า</p>
+              <p className="font-noto-sans-jp text-lg">本・テスト</p>
+            </div>
+          </Link>
 
-        <div to="#">
-        {/* ปิดไว้ก่อนรอข้อสอบเสร็จ */}
-        {/* <Link to="/jlpt"> */}
-          <div className="text-center">
-            <p> JLPT</p>
-            <p className="font-noto-sans-jp text-lg"> 日本語能力試験</p>
+          <div>
+            {/* <Link to="/course"> */}
+            <div className="text-center line-through">
+              <p> คอร์สเรียน</p>
+              <p className="font-noto-sans-jp text-lg"> コース</p>
+            </div>
           </div>
-        </div>
-        <Link to="/article">
-          <div className="text-center cursor-pointer ">
-            <p>บทความที่น่าสนใจ</p>
-            <p className="font-noto-sans-jp text-lg"> 記事</p>
+
+          <div to="#">
+            {/* ปิดไว้ก่อนรอข้อสอบเสร็จ */}
+            {/* <Link to="/jlpt"> */}
+            <div className="text-center text-center line-through">
+              <p>ฝึกทำข้อสอบ JLPT</p>
+              <p className="font-noto-sans-jp text-lg"> 日本語能力試験</p>
+            </div>
           </div>
-        </Link>
+          <Link to="/article">
+            <div className="text-center cursor-pointer ">
+              <p>บทความที่น่าสนใจ</p>
+              <p className="font-noto-sans-jp text-lg"> 記事</p>
+            </div>
+          </Link>
         </div>
         <div className="mt-0 ">
           <div className="flex gap-10 ">
             {/* Login and Logout button  */}
             {token ? (
               <div className="dropdown">
-                <div tabIndex={0} role="button" className="btn m-1 w-32 md:w-60  ">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn m-1 w-32 md:w-60  "
+                >
                   {user}
                 </div>
                 <ul
@@ -76,13 +80,13 @@ function Navbar() {
                   className="dropdown-content menu bg-base-100 rounded-box z-[1] w-auto p-2 shadow"
                 >
                   <li className="p-2">
-                      {" "}
-                      <Link
-                        to="/userinfo"
-                        className="btn btn-sm h-12 w-60  bg-[#F3747F]"
-                      >
-                        Dashboard
-                      </Link>
+                    {" "}
+                    <Link
+                      to="/userinfo"
+                      className="btn btn-sm h-12 w-60  bg-[#F3747F]"
+                    >
+                      Dashboard
+                    </Link>
                   </li>
 
                   {role === "ADMIN" && (
@@ -97,18 +101,17 @@ function Navbar() {
                   )}
 
                   <li className="p-2">
-                      <Link
-                        to="/"
-                        onClick={handleLogout}
-                        className="btn btn-sm h-12 w-60 bg-[#F3747F]"
-                      >
-                        Logout
-                      </Link>
+                    <Link
+                      to="/"
+                      onClick={handleLogout}
+                      className="btn btn-sm h-12 w-60 bg-[#F3747F]"
+                    >
+                      Logout
+                    </Link>
                   </li>
                 </ul>
               </div>
-            ) :
-             (
+            ) : (
               <div className="flex gap-10 ">
                 <Link to="/login">
                   <button className="btn btn-sm h-12 w-32 bg-[#F3747F] ">

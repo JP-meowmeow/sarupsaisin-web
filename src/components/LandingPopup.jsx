@@ -27,17 +27,20 @@ export default function LandingPopup() {
           className="w-32 mx-auto mb-4"
         />
         <h2 className="text-lg font-semibold mb-2 font-kanit">
-          ตอนนี้เว็บไซต์กำลังอยู่ในระหว่างการสร้างนะ <br />
+          ตอนนี้เว็บไซต์กำลังอยู่ในระหว่างการพัฒนา<br />
           <span className="font-noto-sans-jp">
             ただいまウェブサイトを作成中です。
-          </span>
+          </span><br />
+          ใช้งานได้แค่ในส่วนของ<br />
+          ・Article บทความเกี่ยวกับภาษาญี่ปุ่น<br />
+          ・Test ข้อสอบ JLPT เก่า<br />
         </h2>
         <p className="text-sm text-gray-600 font-kanit">
-          อีกไม่นานจะเปิดให้ใช้งานแล้ว แวะเข้ามาดูอีกทีนะ! <br />
-        ปล.หน้าบทความเข้าไปอ่านได้แล้วนะ          <br />
+          อีกไม่นานจะเปิดให้ใช้งานเต็มรูปแบบนะครับ<br />
           <span className="font-noto-sans-jp">
             もう少しで公開予定なので、また見に来てくださいね！
           </span>
+        
         </p>
       </div>
     </div>

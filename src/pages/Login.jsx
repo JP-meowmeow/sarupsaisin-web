@@ -95,7 +95,7 @@ const Login = () => {
                   <Link to="/forgot-password">Forgot password? 忘れちゃった？</Link>
                 </div>
               </form>
-              <div className="mt-3 space-y-2">
+              {/* <div className="mt-3 space-y-2">
                 <button className="w-full p-2 bg-blue-600 text-white rounded-md flex items-center justify-center text-sm sm:text-base">
                   <Facebook className="mr-2" size={20} />
                   LOGIN WITH FACEBOOK
@@ -109,7 +109,7 @@ const Login = () => {
                   </svg>
                   LOGIN WITH GOOGLE
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* Image Section */}
@@ -127,7 +127,7 @@ const Login = () => {
       </div>
 
       {/* Quote Section */}
-      <div className="px-4 sm:px-0">
+      <div className="py-4">
         <p className="text-2xl lg:text-4xl font-bold mb-6 md:mb-10 font-noto-sans-jp text-center">
           "「唯一実現不可能な旅は、いつまでも始まらないものだ」"
           <br />

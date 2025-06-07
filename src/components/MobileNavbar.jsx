@@ -17,11 +17,17 @@ export default function MobileNavbar() {
           </Link>
         </li>
         <li>
+          <Link to="/book" className="flex flex-col items-center gap-1">
+            <Book size={24} />
+            <span className="text-xs">Test</span>
+          </Link>
+        </li>
+        {/* <li>
           <Link to="/course" className="flex flex-col items-center gap-1">
             <Book size={24} />
             <span className="text-xs">Courses</span>
           </Link>
-        </li>
+        </li> */}
         <li>
         <Link to="/article" className="flex flex-col items-center gap-1">
             <Newspaper size={24} />
