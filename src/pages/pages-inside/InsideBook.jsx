@@ -54,7 +54,7 @@ export default function InsideBook() {
 
         <div className="flex-1 flex flex-col justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-3">{book.bookTitle}</h1>
+            <h1 className="text-3xl text-black font-bold mb-3">{book.bookTitle}</h1>
             <p className="text-gray-600 mb-3">{book.shortDescription}</p>
             <div className="text-gray-800 whitespace-pre-line mb-6 leading-relaxed">
               {book.longDescription}
@@ -68,7 +68,7 @@ export default function InsideBook() {
             href="https://www.instagram.com/sarupsaisin"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary w-full mt-2"
+            className="btn btn-primary text-white w-full mt-2"
           >
             ติดต่อสั่งซื้อผ่าน IG
           </a>

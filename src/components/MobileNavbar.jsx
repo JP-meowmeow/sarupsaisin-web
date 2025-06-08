@@ -1,25 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Home, Book, User, Newspaper } from 'lucide-react';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Home, Book, User, Newspaper } from "lucide-react";
 import useAuthStore from "../../store/authStore";
 
 export default function MobileNavbar() {
-
   const { user, token, logout, role } = useAuthStore();
+  const location = useLocation();
 
   return (
     <nav className="bg-[#F8DFDF] font-kanit text-black shadow-lg py-2 px-4">
       <ul className="flex justify-around items-center">
         <li>
           <Link to="/" className="flex flex-col items-center gap-1">
-            <Home size={24} />
-            <span className="text-xs">Home</span>
+            <Home size={24}  color={location.pathname === "/" ? '#F3747F':"black"}/>
+            <span className={`text-xs text-center cursor-pointer ${location.pathname === "/" ? "text-[#F3747F] font-bold " : ""}`}>Home</span>
           </Link>
         </li>
         <li>
           <Link to="/book" className="flex flex-col items-center gap-1">
-            <Book size={24} />
-            <span className="text-xs">Test</span>
+            <Book size={24} color={location.pathname === "/book" ? '#F3747F':"black"}/>
+            <span className={`text-xs text-center cursor-pointer ${location.pathname === "/book" ? "text-[#F3747F] font-bold " : ""}`}>Test</span>
           </Link>
         </li>
         {/* <li>
@@ -29,26 +29,25 @@ export default function MobileNavbar() {
           </Link>
         </li> */}
         <li>
-        <Link to="/article" className="flex flex-col items-center gap-1">
-            <Newspaper size={24} />
-            <span className="text-xs">Article</span>
+          <Link to="/article" className="flex flex-col items-center gap-1">
+            <Newspaper size={24} color={location.pathname === "/article" ? '#F3747F':"black"}/>
+            <span className={`text-xs text-center cursor-pointer ${location.pathname === "/article" ? "text-[#F3747F] font-bold " : ""}`}>Article</span>
           </Link>
-          
         </li>
         <li>
-        {token 
-        ?<Link to="/userinfo" className="flex flex-col items-center gap-1">
-        <User size={24} />
-        <span className="text-xs">Profile</span>
-      </Link>
-        :<Link to="/login" className="flex flex-col items-center gap-1">
-        <User size={24} />
-        <span className="text-xs">Login</span>
-      </Link>
-        }
-        
+          {token ? (
+            <Link to="/userinfo" className="flex flex-col items-center gap-1">
+              <User size={24} color={location.pathname === "/profile" ? '#F3747F':"black"} />
+              <span className={`text-xs text-center cursor-pointer ${location.pathname === "/login" ? "text-[#F3747F] font-bold " : ""}`}>Profile</span>
+            </Link>
+          ) : (
+            <Link to="/login" className="flex flex-col items-center gap-1">
+              <User size={24} color={location.pathname === "/login" ? '#F3747F':"black"} />
+              <span className={`text-xs text-center cursor-pointer ${location.pathname === "/login" ? "text-[#F3747F] font-bold " : ""}`}>Login</span>
+            </Link>
+          )}
         </li>
       </ul>
     </nav>
-  )
+  );
 }
