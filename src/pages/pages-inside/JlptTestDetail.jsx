@@ -101,7 +101,7 @@ export default function JlptTestDetail() {
           ))}
           <button
             onClick={() => setShowAnswer(true)}
-            className="mt-4 px-4 py-2 bg-pink-500 text-white rounded shadow hover:bg-pink-600 mx-auto"
+            className="mt-4 px-4 py-2 bg-pink-500 text-white rounded shadow hover:bg-pink-600"
           >
             ดูเฉลยทั้งหมด
           </button>
