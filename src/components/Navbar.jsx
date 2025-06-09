@@ -43,10 +43,14 @@ function Navbar() {
             <p>คอร์สเรียน</p>
             <p className="font-noto-sans-jp text-sm">コース</p>
           </div>
-          <div className={`text-center line-through cursor-pointer ${location.pathname === "/jlpt" ? "text-[#F3747F] font-bold " : ""}`}>
+
+          <Link to='/jlpttest'>
+          <div className={`text-center cursor-pointer ${location.pathname === "/jlpttest" ? "text-[#F3747F] font-bold " : ""}`}>
             <p>ฝึกทำข้อสอบ JLPT</p>
             <p className="font-noto-sans-jp text-sm">日本語能力試験</p>
           </div>
+          </Link>  
+
           <Link to="/article">
             <div className={`text-center cursor-pointer ${location.pathname === "/article" ? "text-[#F3747F] font-bold " : ""}`}>
               <p>บทความที่น่าสนใจ</p>

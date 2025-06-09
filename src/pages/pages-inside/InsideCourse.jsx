@@ -49,7 +49,7 @@ const CourseDetail = () => {
 
   return (
     <div className="px-4 sm:px-8 lg:px-16 py-16 font-kanit min-h-screen bg-[#FCFBF8] overflow-x-hidden">
-      <h1 className="text-center lg:text-left text-3xl mt-24 font-bold mb-4">
+      <h1 className="text-center lg:text-left text-3xl mt-24 font-bold mb-4 text-black">
         คอร์ส {course.courseName}
       </h1>
       <div className="divider"></div>

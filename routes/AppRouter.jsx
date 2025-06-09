@@ -30,6 +30,7 @@ import JlptTest from "../src/pages/JlptTest";
 import InsideJlpt from '../src/pages/pages-inside/InsideJlpt'
 import CreateBook from "../src/pages/pages-inside/CreateBook";
 import InsideBook from '../src/pages/pages-inside/InsideBook'
+import JlptTestDetail from "../src/pages/pages-inside/JlptTestDetail";
 
 function AppRouter() {
   const { token,role } = useAuthStore();
@@ -49,9 +50,12 @@ function AppRouter() {
           element: role === "ADMIN" ? <CreateBook/> : <Navigate to='/'/>,
         },
        
-        // page for selling the test
-        {path:"jlpt",element:<JlptTest/>},
-        { path: "jlpt/:id", element:<InsideJlpt/> },
+        // page for doing test on web
+        {path:"jlpttest",element:<JlptTest/>},
+        { path: "jlpttest/:id", element:<InsideJlpt/> },
+        {path:"jlpttest/details/:level",element:<JlptTestDetail/>},
+
+        //page for course
         { path: "course", element: <Course /> },
         { path: "course/:id", element: <InsideCourse /> },
 
@@ -65,6 +69,7 @@ function AppRouter() {
           element: role === "ADMIN" ? <EditCourse /> : <Navigate to='/'/>,
         },
 
+        //page for login
         { path: "login", element: token ? <Navigate to="/" /> : <Login /> },
         { path: "/forgot-password",
           element:token ? <Navigate to='/'/> : <ForgotPassword/> },

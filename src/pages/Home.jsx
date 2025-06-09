@@ -52,7 +52,7 @@ function Home() {
                     </Link>
                   )}
                   <Link
-                    to="/course/3"
+                    to="#"
                     className="btn btn-sm bg-[#F3747F] border-[#F3747F] text-white  px-2 sm:px-4 py-1 sm:py-2 sm:pb-8 rounded font-kanit text-sm sm:text-base"
                   >
                     ทดลองเรียน
@@ -110,7 +110,7 @@ function Home() {
 
             <div className="flex justify-center mt-4 sm:mt-8">
               <Link
-                to="/course"
+                to="jlpttest"
                 className="btn btn-sm sm:btn-md text-[12px]  w-full  sm:w-3/4 lg:w-1/2 bg-[#F3747F] border-[#F3747F] font-kanit text-white tracking-widest sm:text-lg"
               >
                 all course คอร์สเรียนทั้งหมด
