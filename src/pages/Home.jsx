@@ -95,15 +95,15 @@ function Home() {
                 />
               ))} */}
               <img
-                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566241/JLPT_N5_nmjstu.png"
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1749882699/5_xrmpcq.png"
                 className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
               />
               <img
-                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png"
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1749882698/6_wax0js.png"
                 className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
               />
               <img
-                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N4_odl9wh.png"
+                src="https://res.cloudinary.com/dhwgh6rof/image/upload/v1749882697/4_apagja.png"
                 className="w-[150px] sm:w-[180px] md:w-[250px] lg:w-[300px] aspect-square rounded-3xl shadow-2xl"
               />
             </div>
