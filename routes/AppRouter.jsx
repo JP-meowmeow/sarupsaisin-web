@@ -27,7 +27,6 @@ import UserData from "../src/pages/UserData";
 import ForgotPassword from "../src/pages/ForgetPassword";
 import ResetPassword from "../src/pages/ResetPassword";
 import JlptTest from "../src/pages/JlptTest";
-import InsideJlpt from '../src/pages/pages-inside/InsideJlpt'
 import CreateBook from "../src/pages/pages-inside/CreateBook";
 import InsideBook from '../src/pages/pages-inside/InsideBook'
 import JlptTestDetail from "../src/pages/pages-inside/JlptTestDetail";
@@ -52,7 +51,6 @@ function AppRouter() {
        
         // page for doing test on web
         {path:"jlpttest",element:<JlptTest/>},
-        { path: "jlpttest/:id", element:<InsideJlpt/> },
         {path:"jlpttest/details/:level",element:<JlptTestDetail/>},
 
         //page for course

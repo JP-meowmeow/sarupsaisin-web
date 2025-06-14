@@ -77,9 +77,9 @@ function Home() {
           {/* Course Section */}
           <div className="mb-4 sm:mb-8 text-center lg:text-left">
             <h2 className="text-xl sm:text-2xl text-black font-bold mb-2 sm:mb-4 font-kanit">
-              คอร์สเรียนภาษาญี่ปุ่น{" "}
+              ข้อสอบเก่า JLPT {" "}
               <span className="font-noto-sans-jp text-black text-xl sm:text-2xl">
-                コース
+                日本語能力試験
               </span>
             </h2>
             <div className="divider -mt-2"></div>
@@ -113,7 +113,7 @@ function Home() {
                 to="jlpttest"
                 className="btn btn-sm sm:btn-md text-[12px]  w-full  sm:w-3/4 lg:w-1/2 bg-[#F3747F] border-[#F3747F] font-kanit text-white tracking-widest sm:text-lg"
               >
-                all course คอร์สเรียนทั้งหมด
+                all test ข้อสอบภาษาญี่ปุ่นเก่าทั้งหมด
               </Link>
             </div>
           </div>
