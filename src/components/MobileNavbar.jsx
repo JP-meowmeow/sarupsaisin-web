@@ -17,7 +17,7 @@ export default function MobileNavbar() {
           </Link>
         </li>
         <li>
-          <Link to="/book" className="flex flex-col items-center gap-1">
+          <Link to="/jlpttest" className="flex flex-col items-center gap-1">
             <Book size={24} color={location.pathname === "/book" ? '#F3747F':"black"}/>
             <span className={`text-xs text-center cursor-pointer ${location.pathname === "/book" ? "text-[#F3747F] font-bold " : ""}`}>Test</span>
           </Link>
