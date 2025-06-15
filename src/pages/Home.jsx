@@ -11,12 +11,18 @@ function Home() {
         <LandingPopup/>
       {/* Adjusted padding for better mobile response */}
       <div className="pt-16 px-2 sm:px-4 lg:px-8">
-        <div className="grid grid-cols-1 ">
+       {/* old layout */}
+ <div className="grid grid-cols-1 ">
           <main className="col-start-1 row-start-1 w-full max-w-7xl mx-auto py-4 sm:py-8">
             {/* Hero Section */}
             <div className="flex flex-col md:flex-row gap-4">
               {/* Video Section */}
-              <div className="w-full md:w-1/2 aspect-video">
+
+              {/* mock up for create space */}
+             <div className="hidden md:block w-full md:w-1/2 aspect-video">
+              
+             </div>
+              {/* <div className="w-full md:w-1/2 aspect-video">
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/XnPOEGJcy3w?si=mV99p1tkPjtMWqTY"
@@ -26,7 +32,7 @@ function Home() {
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 ></iframe>
-              </div>
+              </div> */}
 
               {/* Text Section */}
               <div
@@ -71,7 +77,6 @@ function Home() {
             />
           </div> */}
         </div>
-
         {/* Main Content Area */}
         <div className="w-full max-w-7xl mx-auto -mt-5 ">
           {/* Course Section */}
@@ -177,6 +182,7 @@ function Home() {
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   );

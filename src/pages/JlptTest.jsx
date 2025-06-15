@@ -2,16 +2,18 @@ import { useState, useEffect } from "react";
 import JlptCard from "../components/JlptCard";
 import LandingPopup from "../components/LandingPopup";
 import axios from "axios";
-
+import Spinner from "../components/Spinner";
 const URL = import.meta.env.VITE_API_URL;
 
 function JlptTest() {
   const [jlpt, setJlpt] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const res = await axios.get(`${URL}/jlpt/api/jlpt-tests`);
+        setIsLoading(false);
         setJlpt(res.data); // ✅ ข้อมูลจาก backend
       } catch (err) {
         console.error("Failed to fetch JLPT data", err);
@@ -61,11 +63,17 @@ function JlptTest() {
         </p>
       </div>
       <div className="divider "></div>
-      <div className="grid grid-cols-1 mb-4 sm:grid-cols-2 lg:grid-cols-5 gap-5 ">
-        {jlpt.map((item) => (
-          <JlptCard key={item.id} item={item} />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center w-full min-h-[50vh]">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 mb-4 sm:grid-cols-2 lg:grid-cols-5 gap-5 ">
+          {jlpt.map((item) => (
+            <JlptCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
