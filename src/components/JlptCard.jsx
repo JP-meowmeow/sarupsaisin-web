@@ -30,9 +30,21 @@ function JlptCard({ item }) {
             <div>
               <Link
                 to={"/jlpttest/details/" + item.level}
-                className="btn btn-primary text-[16px] sm:text-base font-kanit text-white"
+                className={
+                  "btn btn-primary text-[16px] sm:text-base font-kanit text-white" +
+                  (["JLPTN3", "JLPTN2", "JLPTN1"].includes(item.level)
+                    ? "btn-disabled bg-gray-400 border-gray-400 text-white cursor-not-allowed"
+                    : "btn-primary text-white")
+                }
+                onClick={(e) => {
+                  if (["JLPTN3", "JLPTN2", "JLPTN1"].includes(item.level)) {
+                    e.preventDefault(); // ป้องกันการ navigate
+                  }
+                }}
               >
-                อ่านเพิ่มเติม
+               {["JLPTN3", "JLPTN2", "JLPTN1"].includes(item.level)
+                    ? "ยังไม่เปิดให้บริการ"
+                    : "อ่านเพิ่มเติม"} 
               </Link>
             </div>
           </div>

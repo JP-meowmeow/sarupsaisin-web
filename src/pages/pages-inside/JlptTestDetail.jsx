@@ -36,7 +36,12 @@ export default function JlptTestDetail() {
       >
         <div className="flex items-center gap-2 text-lg font-semibold text-pink-700">
           <span>📘 ข้อ {q.number}</span>
-          <span className="text-gray-800">{q.content}</span>
+          <span
+            className="text-gray-800"
+            dangerouslySetInnerHTML={{
+              __html: q.content.replace(/\\n/g, "<br>"),
+            }}
+          />
         </div>
         <div className="grid grid-cols-1 gap-3">
           {q.choices.map((c, idx) => {
